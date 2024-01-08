@@ -29,8 +29,7 @@ return [
     |
     */
 
-    // 'path' => env('TELESCOPE_PATH', 'telescope'),
-    'path' => env('TELESCOPE_PATH', 'debug-assistant'),
+    'path' => env('TELESCOPE_PATH', 'codex-debug-assistant'),
 
     /*
     |--------------------------------------------------------------------------
