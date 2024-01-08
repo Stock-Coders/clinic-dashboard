@@ -30,13 +30,13 @@ Route::fallback(function(){
 // this will redirect the standard url "http://localhost:8000/" to "http://localhost:8000/dashboard"
 Route::get('/')->middleware('redirectToDashboard');
 
-//--------------------------> Telescope Routes
+//-------------------------------> Telescope Routes
 Route::get('/cache', function () {
-    if(Cache::has('key')){
-        return Cache::get('key');
+    if(Cache::has('testCache')){ // Cache::has('key')
+        return Cache::get('testCache'); // Cache::get('key');
     }
-    Cache::add('key', 'value');
-    return Cache::get('key');
+    Cache::add('testCache', 'myCache'); // Cache::add('key', 'value');
+    return Cache::get('testCache'); // Cache::get('key');
 });
 
 Route::get('/dumps', function () {
@@ -50,7 +50,7 @@ Route::get('/gates', function () {
     abort(403);
 });
 
-//--------------------------> Start Dashboard Routes
+//-------------------------------> Start Dashboard Routes
 Route::group([
     'middleware' => ['auth' , 'dashboard']
 ], function(){
