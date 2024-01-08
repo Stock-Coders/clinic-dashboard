@@ -26158,7 +26158,7 @@ body.dark-sidebar .main-navbar ul.nav-pills {
   margin: 35px auto; }
 
 .profile-greeting {
-  background-image: url(../images/dashboard/bg.jpg);
+  background-image: url(/assets/dashboard/images/dashboard/bg.jpg);
   background-size: cover !important;
   background-repeat: no-repeat;
   background-position: center center;

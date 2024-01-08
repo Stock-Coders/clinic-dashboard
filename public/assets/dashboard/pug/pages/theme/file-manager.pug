@@ -23,7 +23,7 @@ html(lang='en')
                                       li.breadcrumb-item
                                         a(href='index.html')
                                           | Home
-                                      li.breadcrumb-item Apps                                     
+                                      li.breadcrumb-item Apps
                                       li.breadcrumb-item.active File Manager
                                 .col-sm-6
                                   include ../../components/bookmark
@@ -39,36 +39,36 @@ html(lang='en')
                                   .card
                                     .card-body
                                       ul
-                                        li     
+                                        li
                                           .btn.btn-primary
-                                            i(data-feather="home")                                     
-                                            | Home 
+                                            i(data-feather="home")
+                                            | Home
                                         li
                                           .btn.btn-light
                                             i(data-feather="folder")
-                                            | All    
+                                            | All
                                         li
                                           .btn.btn-light
                                             i(data-feather="clock")
-                                            | Recent    
+                                            | Recent
                                         li
                                           .btn.btn-light
                                             i(data-feather="star")
-                                            | Starred      
+                                            | Starred
                                         li
                                           .btn.btn-light
                                             i(data-feather="alert-circle")
-                                            | Recovery        
+                                            | Recovery
                                         li
                                           .btn.btn-light
                                             i(data-feather="trash-2")
-                                            | Deleted 
+                                            | Deleted
                                       hr
                                       ul
                                         li
                                           .btn.btn-outline-primary
-                                            i(data-feather="database")    
-                                            | Storage   
+                                            i(data-feather="database")
+                                            | Storage
                                           .m-t-15
                                             .progress.sm-progress-bar.mb-1
                                               .progress-bar.bg-primary(role='progressbar' style='width: 25%' aria-valuenow='25' aria-valuemin='0' aria-valuemax='100')
@@ -77,88 +77,88 @@ html(lang='en')
                                       ul
                                         li
                                           .btn.btn-outline-primary
-                                            i(data-feather="grid")    
+                                            i(data-feather="grid")
                                             | Pricing plan
-                                        li 
+                                        li
                                           .pricing-plan
-                                            h6 Trial Version 
+                                            h6 Trial Version
                                             h5 FREE
                                             p  100 GB Space
                                             .btn.btn-outline-primary.btn-xs
                                               | Selected
-                                            img.bg-img(src='../assets/images/dashboard/folder.png', alt='')   
-                                        li 
+                                            img.bg-img(src='../assets/assets/dashboard/images/dashboard/folder.png', alt='')
+                                        li
                                           .pricing-plan
                                             h6 Premium
                                             h5 $5/month
                                             p  200 GB Space
                                             .btn.btn-outline-primary.btn-xs
                                               | Contact Us
-                                            img.bg-img(src='../assets/images/dashboard/folder1.png', alt='')  
+                                            img.bg-img(src='../assets/assets/dashboard/images/dashboard/folder1.png', alt='')
                         .col-xl-9.col-md-12.box-col-12
                           .file-content
                             .card
                               .card-header
                                 .media
                                   form.form-inline(action='#' method='get')
-                                    .form-group.d-flex.mb-0                                       
+                                    .form-group.d-flex.mb-0
                                       i.fa.fa-search
                                       input.form-control-plaintext(type='text' placeholder='Search...')
 
                                   .media-body.text-end
                                     form.d-inline-flex(action='#', method='POST', enctype='multipart/form-data', name='myForm')
-                                      .btn.btn-primary(onclick='getFile()') 
+                                      .btn.btn-primary(onclick='getFile()')
                                         i(data-feather="plus-square")
                                         | Add New
                                       div(style='height: 0px;width: 0px; overflow:hidden;')
-                                        input#upfile(type='file', onchange='sub(this)')                    
+                                        input#upfile(type='file', onchange='sub(this)')
 
                                     .btn.btn-outline-primary.ms-2
-                                      i(data-feather="upload")    
-                                      | Upload  
+                                      i(data-feather="upload")
+                                      | Upload
                               .card-body.file-manager
                                 h4 All Files
                                 h6 Recently opened files
                                 ul.files
                                   li.file-box
-                                    .file-top   
+                                    .file-top
                                       i.fa.fa-file-image-o.txt-primary
                                       i.fa.fa-ellipsis-v.f-14.ellips
                                     .file-bottom
-                                      h6 Logo.psd 
+                                      h6 Logo.psd
                                       p.mb-1 2.0 MB
-                                      p 
-                                        b last open : 
+                                      p
+                                        b last open :
                                         | 1 hour ago
                                   li.file-box
-                                    .file-top   
+                                    .file-top
                                       i.fa.fa-file-archive-o.txt-secondary
                                       i.fa.fa-ellipsis-v.f-14.ellips
                                     .file-bottom
-                                      h6 Project.zip 
+                                      h6 Project.zip
                                       p.mb-1 1.90 GB
-                                      p 
-                                        b last open : 
+                                      p
+                                        b last open :
                                         | 1 hour ago
                                   li.file-box
-                                    .file-top   
+                                    .file-top
                                       i.fa.fa-file-excel-o.txt-success
                                       i.fa.fa-ellipsis-v.f-14.ellips
                                     .file-bottom
                                       h6 Backend.xls
                                       p.mb-1 2.00 GB
-                                      p 
-                                        b last open : 
+                                      p
+                                        b last open :
                                         | 1 hour ago
                                   li.file-box
-                                    .file-top   
+                                    .file-top
                                       i.fa.fa-file-text-o.txt-info
                                       i.fa.fa-ellipsis-v.f-14.ellips
                                     .file-bottom
-                                      h6 requirements.txt 
+                                      h6 requirements.txt
                                       p.mb-1 0.90 KB
-                                      p 
-                                        b last open : 
+                                      p
+                                        b last open :
                                         | 1 hour ago
 
                                 h5.mt-4 Folders
@@ -191,44 +191,44 @@ html(lang='en')
                                 h5.mt-4 Files
                                 ul.files
                                   li.file-box
-                                    .file-top   
+                                    .file-top
                                       i.fa.fa-file-archive-o.txt-secondary
                                       i.fa.fa-ellipsis-v.f-14.ellips
                                     .file-bottom
-                                      h6 Project.zip 
+                                      h6 Project.zip
                                       p.mb-1 1.90 GB
-                                      p 
-                                        b last open : 
+                                      p
+                                        b last open :
                                         | 1 hour ago
                                   li.file-box
-                                    .file-top   
+                                    .file-top
                                       i.fa.fa-file-excel-o.txt-success
                                       i.fa.fa-ellipsis-v.f-14.ellips
                                     .file-bottom
                                       h6 Backend.xls
                                       p.mb-1 2.00 GB
-                                      p 
-                                        b last open : 
+                                      p
+                                        b last open :
                                         | 1 hour ago
                                   li.file-box
-                                    .file-top   
+                                    .file-top
                                       i.fa.fa-file-text-o.txt-info
                                       i.fa.fa-ellipsis-v.f-14.ellips
                                     .file-bottom
-                                      h6 requirements.txt 
+                                      h6 requirements.txt
                                       p.mb-1 0.90 KB
-                                      p 
-                                        b last open : 
+                                      p
+                                        b last open :
                                         | 1 hour ago
                                   li.file-box
-                                    .file-top   
+                                    .file-top
                                       i.fa.fa-file-text-o.txt-primary
                                       i.fa.fa-ellipsis-v.f-14.ellips
                                     .file-bottom
-                                      h6 Logo.psd 
+                                      h6 Logo.psd
                                       p.mb-1 2.0 MB
-                                      p 
-                                        b last open : 
+                                      p
+                                        b last open :
                                         | 1 hour ago
                     // Container-fluid Ends
                 include ../../components/footer
@@ -249,4 +249,4 @@ html(lang='en')
                             .form-group
                               input#input_copy.inp-val.form-control.m-r-10(type='text', value='', readonly='readonly')
                               button.btn.btn-primary.notification(onclick='myFunction()') Copy text
-        include ../../components/footer-files      
+        include ../../components/footer-files

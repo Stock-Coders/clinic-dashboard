@@ -28,7 +28,7 @@ html(lang='en')
                             li.breadcrumb-item
                               a(href='index.html')
                                | Home
-                            li.breadcrumb-item Apps   
+                            li.breadcrumb-item Apps
                             li.breadcrumb-item.active Contacts
                         .col-sm-6
                   // Container-fluid starts
@@ -38,14 +38,14 @@ html(lang='en')
                         .col-xl-3.xl-30
                           .email-sidebar
                               a.btn.btn-primary.email-aside-toggle(href="javascript:void(0)")
-                                | contact filter    
+                                | contact filter
                               .email-left-aside
                                 .card
                                   .card-body
                                     .email-app-sidebar.left-bookmark
                                       .media
                                         .media-size-email
-                                          img.me-3.rounded-circle(src='../assets/images/user/user.png', alt='')
+                                          img.me-3.rounded-circle(src='/assets/dashboard/images/user/user.png', alt='')
                                         .media-body
                                           a(href="user-profile.html")
                                             h6.f-w-700 MARK JENCO
@@ -69,7 +69,7 @@ html(lang='en')
                                                         .row
                                                           .col-sm-6
                                                             input.form-control#con-name(type='text', required='', placeholder='First Name', autocomplete='off')
-                                                          .col-sm-6    
+                                                          .col-sm-6
                                                             input.form-control#con-last(type='text', required='', placeholder='Last Name', autocomplete='off')
                                                       .mb-3.col-md-12.mt-0
                                                         label(for='con-mail') Email Address
@@ -84,7 +84,7 @@ html(lang='en')
                                                               option Mobile
                                                               option Work
                                                               option Others
-                                                    input#index_var(type='hidden' value='5')          
+                                                    input#index_var(type='hidden' value='5')
                                                     button.btn.btn-secondary(type='submit', onclick='submitContact()') Save
                                                     button.btn.btn-primary(type='button', data-bs-dismiss='modal') Cancel
                                         li.nav-item
@@ -149,58 +149,58 @@ html(lang='en')
                                             #v-pills-tab.nav.flex-column.nav-pills(role='tablist', aria-orientation='vertical')
                                               a#v-pills-user-tab.contact-tab-0.nav-link.active(data-bs-toggle='pill', onclick= 'activeDiv(0)', href='#v-pills-user', role='tab', aria-controls='v-pills-user', aria-selected='true')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_0(src='../assets/images/user/2.png' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_0(src='/assets/dashboard/images/user/2.png' alt='')
                                                   .media-body
-                                                    h6 
-                                                      span.first_name_0 Bucky 
+                                                    h6
+                                                      span.first_name_0 Bucky
                                                       span.last_name_0 Barnes
                                                     p.email_add_0 barnes@gmail.com
-                                              a#v-pills-profile-tab.contact-tab-1.nav-link(data-bs-toggle='pill', onclick= 'activeDiv(1)', href='#v-pills-profile', role='tab', aria-controls='v-pills-profile', aria-selected='false') 
+                                              a#v-pills-profile-tab.contact-tab-1.nav-link(data-bs-toggle='pill', onclick= 'activeDiv(1)', href='#v-pills-profile', role='tab', aria-controls='v-pills-profile', aria-selected='false')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_1(src='../assets/images/user/8.jpg' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_1(src='/assets/dashboard/images/user/8.jpg' alt='')
                                                   .media-body
-                                                    h6 
-                                                      span.first_name_1 Comeren 
+                                                    h6
+                                                      span.first_name_1 Comeren
                                                       span.last_name_1 Diaz
                                                     p.email_add_1 comeren@gmail.com
                                               a#v-pills-messages-tab.contact-tab-2.nav-link(data-bs-toggle='pill', onclick= 'activeDiv(2)', href='#v-pills-messages', role='tab', aria-controls='v-pills-messages', aria-selected='false')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_2(src='../assets/images/user/1.jpg' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_2(src='/assets/dashboard/images/user/1.jpg' alt='')
                                                   .media-body
-                                                    h6 
-                                                      span.first_name_2 Issa 
+                                                    h6
+                                                      span.first_name_2 Issa
                                                       span.last_name_2 Bell
                                                     p.email_add_2 issabell@gmail.com
                                               a#v-pills-settings-tab.contact-tab-3.nav-link(data-bs-toggle='pill', onclick= 'activeDiv(3)', href='#v-pills-settings', role='tab', aria-controls='v-pills-settings', aria-selected='false')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_3(src='../assets/images/user/14.png' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_3(src='/assets/dashboard/images/user/14.png' alt='')
                                                   .media-body
-                                                    h6 
-                                                      span.first_name_3 Andew 
+                                                    h6
+                                                      span.first_name_3 Andew
                                                       span.last_name_3 Jon
                                                     p.email_add_3 andewjon@gmail.com
                                               a#v-pills-contact1-tab.contact-tab-4.nav-link(data-bs-toggle='pill', onclick= 'activeDiv(4)', href='#v-pills-contact1', role='tab', aria-controls='v-pills-settings', aria-selected='false')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_4(src='../assets/images/user/5.jpg' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle.update_img_4(src='/assets/dashboard/images/user/5.jpg' alt='')
                                                   .media-body
-                                                    h6 
-                                                      span.first_name_4 Jason 
+                                                    h6
+                                                      span.first_name_4 Jason
                                                       span.last_name_4 Borne
                                                     p.email_add_4 jasonb@gmail.com
                                               a#v-pills-contact8-tab.contact-tab-5.nav-link(data-bs-toggle='pill', onclick= 'activeDiv(5)', href='#v-pills-contact2', role='tab', aria-controls='v-pills-settings', aria-selected='false')
                                                 .media
                                                   img.img-50.img-fluid.m-r-20.rounded-circle.update_img_5(src='../assets/images/avtar/11.jpg' alt='')
                                                   .media-body
-                                                    h6 
-                                                      span.first_name_5 Monty 
+                                                    h6
+                                                      span.first_name_5 Monty
                                                       span.last_name_5 Carlo
                                                     p.email_add_5 monty@gmail.com
                                               a#v-pills-contact3-tab.contact-tab-6.nav-link(data-bs-toggle='pill', onclick= 'activeDiv(6)', href='#v-pills-contact3', role='tab', aria-controls='v-pills-settings', aria-selected='false')
                                                 .media
                                                   img.img-50.img-fluid.m-r-20.rounded-circle.update_img_6(src='../assets/images/avtar/16.jpg' alt='')
                                                   .media-body
-                                                    h6 
-                                                      span.first_name_6 Brock 
+                                                    h6
+                                                      span.first_name_6 Brock
                                                       span.last_name_6 Lee
                                                     p.email_add_6 lee@gmail.com
                                           .col-xl-8.xl-50.col-md-7.box-col-6
@@ -208,11 +208,11 @@ html(lang='en')
                                               #v-pills-user.tab-pane.contact-tab-0.tab-content-child.fade.show.active(role='tabpanel', aria-labelledby='v-pills-user-tab')
                                                 .profile-mail
                                                   .media.align-items-center
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_0(src='../assets/images/user/2.png' alt='')
-                                                    input.updateimg(type='file', name='img', onchange='readURL(this,0)') 
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_0(src='/assets/dashboard/images/user/2.png' alt='')
+                                                    input.updateimg(type='file', name='img', onchange='readURL(this,0)')
                                                     .media-body.mt-0
                                                       h5
-                                                        span.first_name_0 Bucky 
+                                                        span.first_name_0 Bucky
                                                         span.last_name_0 Barnes
                                                       p.email_add_0 barnes@gmail.com
                                                       ul
@@ -227,12 +227,12 @@ html(lang='en')
                                                   .email-general
                                                     h6.mb-3 General
                                                     ul
-                                                      li Name 
+                                                      li Name
                                                         span.font-primary.first_name_0 Bucky
-                                                      li Gender 
+                                                      li Gender
                                                         span.font-primary Male
                                                       li Birthday
-                                                        span.font-primary 
+                                                        span.font-primary
                                                           span.birth_day_0 18
                                                           span.birth_month_0.ms-1 May
                                                           span.birth_year_0.ms-1 1994
@@ -242,8 +242,8 @@ html(lang='en')
                                                         span.font-primary.city_0 moline acres
                                                       li Mobile No
                                                         span.font-primary.mobile_num_0 +0 1800 76855
-                                                      li Email Address 
-                                                        span.font-primary.email_add_0 barnes@gmail.com 
+                                                      li Email Address
+                                                        span.font-primary.email_add_0 barnes@gmail.com
                                                       li Website
                                                         span.font-primary.url_add_0 www.test.com
                                                       li Interest
@@ -251,11 +251,11 @@ html(lang='en')
                                               #v-pills-profile.tab-pane.contact-tab-1.tab-content-child.fade(role='tabpanel', aria-labelledby='v-pills-profile-tab')
                                                 .profile-mail
                                                   .media
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_1(src='../assets/images/user/8.jpg' alt='')
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_1(src='/assets/dashboard/images/user/8.jpg' alt='')
                                                     input.updateimg(type='file', name='img', onchange='readURL(this,1)')
                                                     .media-body.mt-0
                                                       h5
-                                                        span.first_name_1 Comeren 
+                                                        span.first_name_1 Comeren
                                                         span.last_name_1 Diaz
                                                       p.email_add_1 comeren@gmail.com
                                                       ul
@@ -270,12 +270,12 @@ html(lang='en')
                                                   .email-general
                                                     h6.mb-3 General
                                                     ul
-                                                      li Name 
+                                                      li Name
                                                         span.font-primary.first_name_1 Comeren
-                                                      li Gender 
+                                                      li Gender
                                                         span.font-primary Female
                                                       li Birthday
-                                                        span.font-primary 
+                                                        span.font-primary
                                                           span.birth_day_1 7
                                                           span.birth_month_1.ms-1 Feb
                                                           span.birth_year_1.ms-1 1995
@@ -285,7 +285,7 @@ html(lang='en')
                                                         span.font-primary.city_1 Delhi
                                                       li Mobile No
                                                         span.font-primary.mobile_num_1 +0 1800 55812
-                                                      li Email Address 
+                                                      li Email Address
                                                         span.font-primary.email_add_1 comeren@gmail.com
                                                       li Website
                                                         span.font-primary.url_add_1 www.cometest@.com
@@ -294,11 +294,11 @@ html(lang='en')
                                               #v-pills-messages.tab-pane.contact-tab-2.tab-content-child.fade(role='tabpanel', aria-labelledby='v-pills-messages-tab')
                                                 .profile-mail
                                                   .media
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_2(src='../assets/images/user/1.jpg' alt='')
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_2(src='/assets/dashboard/images/user/1.jpg' alt='')
                                                     input.updateimg(type='file', name='img', onchange='readURL(this,2)')
                                                     .media-body.mt-0
-                                                      h5 
-                                                        span.first_name_2 Issa 
+                                                      h5
+                                                        span.first_name_2 Issa
                                                         span.last_name_2 Bell
                                                       p.email_add_2 issabell@gmail.com
                                                       ul
@@ -313,12 +313,12 @@ html(lang='en')
                                                   .email-general
                                                     h6.mb-3 General
                                                     ul
-                                                      li Name 
+                                                      li Name
                                                         span.font-primary.first_name_2 Issa
-                                                      li Gender 
+                                                      li Gender
                                                         span.font-primary Male
                                                       li Birthday
-                                                        span.font-primary 
+                                                        span.font-primary
                                                           span.birth_day_2 20
                                                           span.birth_month_2.ms-1 Jul
                                                           span.birth_year_2.ms-1 1993
@@ -328,7 +328,7 @@ html(lang='en')
                                                         span.font-primary.city_2 Mumbai
                                                       li Mobile No
                                                         span.font-primary.mobile_num_2 +0 1800 87412
-                                                      li Email Address 
+                                                      li Email Address
                                                         span.font-primary.email_add_2 issabell@gmail.com
                                                       li Website
                                                         span.font-primary.url_add_2 www.belltest@.com
@@ -337,11 +337,11 @@ html(lang='en')
                                               #v-pills-settings.tab-pane.contact-tab-3.tab-content-child.fade(role='tabpanel', aria-labelledby='v-pills-settings-tab')
                                                 .profile-mail
                                                   .media
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_3(src='../assets/images/user/14.png' alt='')
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_3(src='/assets/dashboard/images/user/14.png' alt='')
                                                     input.updateimg(type='file', name='img', onchange='readURL(this,3)')
                                                     .media-body.mt-0
-                                                      h5 
-                                                        span.first_name_3 Andew 
+                                                      h5
+                                                        span.first_name_3 Andew
                                                         span.last_name_3 Jon
                                                       p.email_add_3 andewjon@gmail.com
                                                       ul
@@ -356,12 +356,12 @@ html(lang='en')
                                                   .email-general
                                                     h6.mb-3 General
                                                     ul
-                                                      li Name 
+                                                      li Name
                                                         span.font-primary.first_name_3 Andew
-                                                      li Gender 
+                                                      li Gender
                                                         span.font-primary Male
                                                       li Birthday
-                                                        span.font-primary 
+                                                        span.font-primary
                                                           span.birth_day_3 25
                                                           span.birth_month_3.ms-1 Aug
                                                           span.birth_year_3.ms-1 1996
@@ -371,7 +371,7 @@ html(lang='en')
                                                         span.font-primary.city_3 Amreli
                                                       li Mobile No
                                                         span.font-primary.mobile_num_3 +0 1800 79877
-                                                      li Email Address 
+                                                      li Email Address
                                                         span.font-primary.email_add_3 andewjon@gmail.com
                                                       li Website
                                                         span.font-primary.url_add_3 www.test@.com
@@ -380,11 +380,11 @@ html(lang='en')
                                               #v-pills-contact1.tab-pane.contact-tab-4.tab-content-child.fade(role='tabpanel', aria-labelledby='v-pills-contact1-tab')
                                                 .profile-mail
                                                   .media
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_4(src='../assets/images/user/5.jpg' alt='')
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_4(src='/assets/dashboard/images/user/5.jpg' alt='')
                                                     input.updateimg(type='file', name='img', onchange='readURL(this,4)')
                                                     .media-body.mt-0
-                                                      h5 
-                                                        span.first_name_4 Jason 
+                                                      h5
+                                                        span.first_name_4 Jason
                                                         span.last_name_4 Borne
                                                       p.email_add_4 jasonb@gmail.com
                                                       ul
@@ -399,12 +399,12 @@ html(lang='en')
                                                   .email-general
                                                     h6.mb-3 General
                                                     ul
-                                                      li Name 
+                                                      li Name
                                                         span.font-primary.first_name_4 Jason
-                                                      li Gender 
+                                                      li Gender
                                                         span.font-primary Male
                                                       li Birthday
-                                                        span.font-primary 
+                                                        span.font-primary
                                                           span.birth_day_4 30
                                                           span.birth_month_4.ms-1 Oct
                                                           span.birth_year_4.ms-1 1992
@@ -414,7 +414,7 @@ html(lang='en')
                                                         span.font-primary.city_4 Delhi
                                                       li Mobile No
                                                         span.font-primary.mobile_num_4 +0 1800 11547
-                                                      li Email Address 
+                                                      li Email Address
                                                         span.font-primary.email_add_4 jasonb@gmail.com
                                                       li Website
                                                         span.font-primary.url_add_4 www.jason@.com
@@ -426,8 +426,8 @@ html(lang='en')
                                                     img.img-100.img-fluid.m-r-20.rounded-circle.update_img_5(src='../assets/images/avtar/11.jpg' alt='')
                                                     input.updateimg(type='file', name='img', onchange='readURL(this,5)')
                                                     .media-body.mt-0
-                                                      h5 
-                                                        span.first_name_5 Monty  
+                                                      h5
+                                                        span.first_name_5 Monty
                                                         span.last_name_5 Carlo
                                                       p.email_add_5 monty@gmail.com
                                                       ul
@@ -442,12 +442,12 @@ html(lang='en')
                                                   .email-general
                                                     h6.mb-3 General
                                                     ul
-                                                      li Name 
+                                                      li Name
                                                         span.font-primary.first_name_5 Monty
-                                                      li Gender 
+                                                      li Gender
                                                         span.font-primary Male
                                                       li Birthday
-                                                        span.font-primary 
+                                                        span.font-primary
                                                           span.birth_day_5 12
                                                           span.birth_month_5.ms-1 Nov
                                                           span.birth_year_5.ms-1 1994
@@ -457,7 +457,7 @@ html(lang='en')
                                                         span.font-primary.city_5 Amreli
                                                       li Mobile No
                                                         span.font-primary.mobile_num_5 +0 1800 87944
-                                                      li Email Address 
+                                                      li Email Address
                                                         span.font-primary.email_add_5 monty@gmail.com
                                                       li Website
                                                         span.font-primary.url_add_5 www.mon@.com
@@ -469,8 +469,8 @@ html(lang='en')
                                                     img.img-100.img-fluid.m-r-20.rounded-circle.update_img_6(src='../assets/images/avtar/16.jpg' alt='')
                                                     input.updateimg(type='file', name='img', onchange='readURL(this,6)')
                                                     .media-body.mt-0
-                                                      h5 
-                                                        span.first_name_6 Brock 
+                                                      h5
+                                                        span.first_name_6 Brock
                                                         span.last_name_6 Lee
                                                       p.email_add_6 lee@gmail.com
                                                       ul
@@ -485,12 +485,12 @@ html(lang='en')
                                                   .email-general
                                                     h6.mb-3 General
                                                     ul
-                                                      li Name 
+                                                      li Name
                                                         span.font-primary.first_name_6 Brock
-                                                      li Gender 
+                                                      li Gender
                                                         span.font-primary Male
                                                       li Birthday
-                                                        span.font-primary 
+                                                        span.font-primary
                                                           span.birth_day_6 8
                                                           span.birth_month_6.ms-1 Dec
                                                           span.birth_year_6.ms-1 1992
@@ -500,12 +500,12 @@ html(lang='en')
                                                         span.font-primary.city_6 Ahemdabad
                                                       li Mobile No
                                                         span.font-primary.mobile_num_6 +0 1800 58712
-                                                      li Email Address 
+                                                      li Email Address
                                                         span.font-primary.email_add_6 lee@gmail.com
                                                       li Website
                                                         span.font-primary.url_add_6 www.lee.com
                                                       li Interest
-                                                        span.font-primary.interest_6 photography             
+                                                        span.font-primary.interest_6 photography
                                             .contact-editform
                                               form
                                                 .row.g-2
@@ -514,7 +514,7 @@ html(lang='en')
                                                     .row
                                                       .col-sm-6
                                                         input.form-control#first_name(type='text', required='', placeholder='First Name', value='first_name')
-                                                      .col-sm-6    
+                                                      .col-sm-6
                                                         input.form-control#last_name(type='text', required='', placeholder='Last Name', value='last_name')
                                                   .mt-0.mb-3.col-md-12
                                                     label Email Address
@@ -535,7 +535,7 @@ html(lang='en')
                                                     .row
                                                       .col-lg-6.col-sm-6
                                                         input.form-control#url_add(type='text', required='')
-                                                      .col-lg-4.col-sm-6    
+                                                      .col-lg-4.col-sm-6
                                                         select.js-example-basic-single
                                                           option(value='pw') Personal web address
                                                           option(value='cw') Company web address
@@ -629,7 +629,7 @@ html(lang='en')
                                                           input.form-control(type='text', placeholder='Country')
                                                       .col-sm-6
                                                         div
-                                                          input.form-control(type='text', placeholder='Pin Code')           
+                                                          input.form-control(type='text', placeholder='Pin Code')
                                                 a.ps-0.edit-information.f-w-600(href='javascript:void(0)') Edit more information
                                                 button.btn.btn-secondary.update-contact(type='button') Save
                                                 button.btn.btn-primary(type='button', data-bs-dismiss='modal') Cancel
@@ -644,25 +644,25 @@ html(lang='en')
                                             #v-pills-tab1.nav.flex-column.nav-pills(role='tablist', aria-orientation='vertical')
                                               a#v-pills-iduser-tab.nav-link.active(data-bs-toggle='pill', href='#v-pills-iduser', role='tab', aria-controls='v-pills-iduser', aria-selected='true')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle(src='../assets/images/user/user.png' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle(src='/assets/dashboard/images/user/user.png' alt='')
                                                   .media-body
                                                     h6 Mark jecno
                                                     p markjecno@gmail.com
-                                              a#v-pills-iduser1-tab.nav-link(data-bs-toggle='pill', href='#v-pills-iduser1', role='tab', aria-controls='v-pills-iduser1', aria-selected='false') 
+                                              a#v-pills-iduser1-tab.nav-link(data-bs-toggle='pill', href='#v-pills-iduser1', role='tab', aria-controls='v-pills-iduser1', aria-selected='false')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle(src='../assets/images/user/3.jpg' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle(src='/assets/dashboard/images/user/3.jpg' alt='')
                                                   .media-body
                                                     h6 Jason Borne
                                                     p jasonb@gmail.com
                                               a#v-pills-iduser2-tab.nav-link(data-bs-toggle='pill', href='#v-pills-iduser2', role='tab', aria-controls='v-pills-iduser2', aria-selected='false')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle(src='../assets/images/user/4.jpg' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle(src='/assets/dashboard/images/user/4.jpg' alt='')
                                                   .media-body
                                                     h6 Sarah Loren
                                                     p barnes@gmail.com
                                               a#v-pills-iduser3-tab.nav-link(data-bs-toggle='pill', href='#v-pills-iduser3', role='tab', aria-controls='v-pills-iduser3', aria-selected='false')
                                                 .media
-                                                  img.img-50.img-fluid.m-r-20.rounded-circle(src='../assets/images/user/10.jpg' alt='')
+                                                  img.img-50.img-fluid.m-r-20.rounded-circle(src='/assets/dashboard/images/user/10.jpg' alt='')
                                                   .media-body
                                                     h6 Andew Jon
                                                     p andrewj@gmail.com
@@ -671,10 +671,10 @@ html(lang='en')
                                               #v-pills-iduser.tab-pane.fade.show.active(role='tabpanel', aria-labelledby='v-pills-iduser-tab')
                                                 .profile-mail
                                                   .media
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_5(src='../assets/images/user/user.png' alt='')
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_5(src='/assets/dashboard/images/user/user.png' alt='')
                                                     .media-body.mt-0
                                                       h5
-                                                        span.first_name_5 Mark 
+                                                        span.first_name_5 Mark
                                                         span.last_name_5 jecno
                                                       p.email_add_5 markjecno@gmail.com
                                                       ul
@@ -682,19 +682,19 @@ html(lang='en')
                                                           a(href='javascript:void(0)', onclick='printContact(5)', data-bs-toggle='modal', data-bs-target='#printModal') Print
                                                   .email-general
                                                     h6 General
-                                                    p Email Address: 
+                                                    p Email Address:
                                                       span.font-primary.email_add_5 markjecno@gmail.com
                                                     .gender
                                                       h6 Personal
-                                                      p Gender: 
+                                                      p Gender:
                                                         span Male
                                               #v-pills-iduser1.tab-pane.fade(role='tabpanel', aria-labelledby='v-pills-iduser1-tab')
                                                 .profile-mail
                                                   .media
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_6(src='../assets/images/user/3.jpg' alt='')
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_6(src='/assets/dashboard/images/user/3.jpg' alt='')
                                                     .media-body.mt-0
                                                       h5
-                                                        span.first_name_6 Jason 
+                                                        span.first_name_6 Jason
                                                         span.last_name_6 Borne
                                                       p.email_add_6 jasonb@gmail.com
                                                       ul
@@ -702,19 +702,19 @@ html(lang='en')
                                                           a(href='javascript:void(0)', onclick='printContact(6)', data-bs-toggle='modal', data-bs-target='#printModal') Print
                                                   .email-general
                                                     h6 General
-                                                    p Email Address: 
+                                                    p Email Address:
                                                       span.font-primary.email_add_6 jasonb@gmail.com
                                                     .gender
                                                       h6 Personal
-                                                      p Gender: 
+                                                      p Gender:
                                                         span Male
                                               #v-pills-iduser2.tab-pane.fade(role='tabpanel', aria-labelledby='v-pills-iduser2-tab')
                                                 .profile-mail
                                                   .media
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_7(src='../assets/images/user/4.jpg' alt='')
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_7(src='/assets/dashboard/images/user/4.jpg' alt='')
                                                     .media-body.mt-0
-                                                      h5 
-                                                        span.first_name_7 Sarah 
+                                                      h5
+                                                        span.first_name_7 Sarah
                                                         span.last_name_7 Loren
                                                       p.email_add_7 barnes@gmail.com
                                                       ul
@@ -722,19 +722,19 @@ html(lang='en')
                                                           a(href='javascript:void(0)', onclick='printContact(7)', data-bs-toggle='modal', data-bs-target='#printModal') Print
                                                   .email-general
                                                     h6 General
-                                                    p Email Address: 
+                                                    p Email Address:
                                                       span.font-primary.email_add_7 barnes@gmail.com
                                                     .gender
                                                       h6 Personal
-                                                      p Gender: 
+                                                      p Gender:
                                                         span Female
                                               #v-pills-iduser3.tab-pane.fade(role='tabpanel', aria-labelledby='v-pills-iduser3-tab')
                                                 .profile-mail
                                                   .media
-                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_8(src='../assets/images/user/10.jpg' alt='')
+                                                    img.img-100.img-fluid.m-r-20.rounded-circle.update_img_8(src='/assets/dashboard/images/user/10.jpg' alt='')
                                                     .media-body.mt-0
-                                                      h5 
-                                                        span.first_name_8 Andew 
+                                                      h5
+                                                        span.first_name_8 Andew
                                                         span.last_name_8 Jon
                                                       p.email_add_8 andrewj@gmail.com
                                                       ul
@@ -742,11 +742,11 @@ html(lang='en')
                                                           a(href='javascript:void(0)', onclick='printContact(8)', data-bs-toggle='modal', data-bs-target='#printModal') Print
                                                   .email-general
                                                     h6 General
-                                                    p Email Address: 
+                                                    p Email Address:
                                                       span.font-primary.email_add_8 andrewj@gmail.com
                                                     .gender
                                                       h6 Personal
-                                                      p Gender: 
+                                                      p Gender:
                                                         span Female
                                   #right-history
                                     .modal-header.p-l-20.p-r-20
@@ -773,16 +773,16 @@ html(lang='en')
                                         .modal-body.list-persons
                                           .profile-mail.pt-0#DivIdToPrint
                                             .media
-                                              img.img-100.img-fluid.m-r-20.rounded-circle#updateimg(src='../assets/images/user/2.png' alt='')
+                                              img.img-100.img-fluid.m-r-20.rounded-circle#updateimg(src='/assets/dashboard/images/user/2.png' alt='')
                                               .media-body.mt-0
                                                 h5
-                                                  span#printname Bucky 
+                                                  span#printname Bucky
                                                   span#printlast Barnes
                                                 p#printmail barnes@gmail.com
                                             .email-general
                                               h6 General
-                                              p Email Address: 
-                                                span.font-primary#mailadd barnes@gmail.com   
+                                              p Email Address:
+                                                span.font-primary#mailadd barnes@gmail.com
                                           button.btn.btn-secondary#btnPrint(type='button',  onclick='printDiv();') Print
                                           button.btn.btn-primary(type='button', data-bs-dismiss='modal') Cancel
                   // Container-fluid Ends
