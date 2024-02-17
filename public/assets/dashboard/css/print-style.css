@@ -1,0 +1,28 @@
+/* Hide unnecessary elements when printing */
+body, header, footer, nav, aside, form, iframe, .no-print {
+    display: none;
+}
+
+/* Set a specific width for table columns */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Set a fixed width for each table column (adjust as needed) */
+table th, table td {
+    width: 20%; /* Adjust as needed */
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Ensure that tables don't break across pages */
+table {
+    page-break-inside: auto;
+}
+
+/* Avoid page breaks inside table rows */
+tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+}
