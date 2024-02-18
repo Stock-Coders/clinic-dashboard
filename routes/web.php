@@ -161,7 +161,9 @@ Route::group([
         Route::get('/patient/{patientId}/payment/{paymentId}/edit', [DashboardPaymentController::class, 'editSingle'])->name('patient.payments.edit');
 
         // Receipts routes
+        Route::get('/pdf/receipts', [ReceiptController::class, 'index'])->name('receipts.index.pdf');
         Route::get('/receipts/{id}', [ReceiptController::class, 'show'])->name('receipts.show.pdf');
+        Route::get('/patient/{id}/pdf/receipts', [ReceiptController::class, 'showIndex'])->name('receipts.show-index.pdf');
 
         // Contacts routes
         Route::resource('/contacts', DashboardContactController::class);

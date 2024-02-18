@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.pdf-export-master')
-@section('title') All Patients ({{ \App\Models\Patient::count() }}) @endsection
+@section('title') All {{ $patient->first_name .' '. $patient->last_name }}'s Receipts ({{ $patientPayments->count() }}) @endsection
 @section('content')
 <div class="container-fluid">
     <div class="row">
@@ -27,15 +27,19 @@
                     <span class="fw-bold h4">StockCoders</span>
                 </div> --}}
                 {{-- <h3>اخصائي طب و جراحة الوجه و الفكين</h3> --}}
-                {{-- <h2>All Patients ({{ \App\Models\Patient::count() }})</h2> --}}
+                {{-- <h2>All Receipts ({{ \App\Models\Receipt::count() }})</h2> --}}
             {{-- </div> --}}
           </div>
           <div class="card-body">
-            {{-- @if($prescriptions->count() > 0) --}}
+            {{-- @if($patientPayments->count() > 0) --}}
             <div class="print-btn-container">
                 <div class="d-flex justify-content-end mb-3">
                     <button class="btn btn-secondary fw-bold" id="print-btn" onclick="printPageAndShowMessage();">طباعة</button>
                 </div>
+            </div>
+            <div dir="rtl" class="mb-2">
+                <span class="fw-bold text-decoration-underline">جميع إيصالات:</span>
+                <span class="fw-bold text-primary">{{ $patient->first_name .' '. $patient->last_name }}</span>
             </div>
             {{-- @endif --}}
             <div class="table-responsive" dir="rtl">
@@ -43,99 +47,87 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    {{-- <th>ID</th> --}}
-                    <th>الأسم</th>
+                    <th>الإيصال (ID):</th>
+                    <th>طريقة الدفع</th>
+                    <th>التخفيض</th>
+                    <th>السعر (ج.م)</th>
+                    <th>التاريخ</th>
+                    <th>الوقت</th>
                     <th>اّخر زيارة</th>
-                    <th>الشكوى الرئيسية</th>
-                    <th>الأمراض المزمنة</th>
-                    {{-- <th>Appointments</th> --}}
-                    {{-- <th>X-rays</th> --}}
-                    {{-- <th>Email</th> --}}
-                    <th>الهاتف</th>
-                    {{-- <th>Emergency Phone</th> --}}
-                    {{-- <th>WhatsApp</th> --}}
-                    {{-- <th>Date of Birth</th> --}}
-                    <th>السن</th>
-                    <th>الجنس</th>
-                    <th>العنوان</th>
-                    {{-- <th>أنشئت في</th> --}}
-                    {{-- <th>Updated at</th> --}}
-                    {{-- <th>انشأ من قبل</th> --}}
-                    {{-- <th>Updated by</th> --}}
+                    <th>أنشئت في</th>
+                    <th>تم التحديث في</th>
+                    <th>انشأ من قبل</th>
+                    <th>تم التحديث بواسطة</th>
                     <th class="hidden-print-view text-center">اعرض للطباعة</th>
-                    {{-- <th class="text-center">إجراء</th> --}}
+                    <th class="text-center hidden-print-view">إجراء</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($patients as $patient)
+                @foreach ($patientPayments as $payment)
                 <tr>
                     <th>{{ $loop->iteration }}</th>
-                    {{-- <td>{{ $patient->id }}</td> --}}
-                    <td>{{ $patient->first_name .' '. $patient->last_name }} </td>
+                    <td>{{ $payment->id }}</td>
                     <td>
-                        @if ($patient->lastVisits->isNotEmpty())
-                            {{ \Carbon\Carbon::parse($patient->lastVisits->last()->last_visit_date)->format('d M, Y') }}
+                        @if($payment->payment_method == 'vodafone_cash')
+                            فودافون كاش
+                        @elseif($payment->payment_method == 'credit_card')
+                            بطاقة إئتمان
+                        @else
+                            كاش
+                        @endif
+                    </td>
+                    <td>
+                        <span class="text-center fw-bold text-dark fs-6">
+                            @if($payment->discount == null || $payment->discount == 0)
+                                0%
+                            @elseif($payment->discount != null && $payment->discount >= 1)
+                                {{ $payment->discount }}%
+                            @endif
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        @if($payment->discount != null && $payment->discount >= 1)
+                        <del class="text-danger fw-bold">{{ $payment->amount_before_discount }}</del>
+                        <br/>
+                        <span class="badge bg-dark text-center text-light fs-6">{{ $payment->amount_after_discount }}</span>
+                        @elseif($payment->discount == null || $payment->discount == 0)
+                        <span class="badge bg-dark text-center text-light fs-6">{{ $payment->amount_after_discount }}</span>
+                        @endif
+                    </td>
+                    <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $payment->payment_date)->format('d-M-Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($payment->payment_time)->format('h:i A') }}</td>
+                    <td>
+                        @if ($payment->patient->lastVisits->isNotEmpty())
+                            {{ \Carbon\Carbon::parse($payment->patient->lastVisits->last()->last_visit_date)->format('d M, Y') }}
                         @else
                             {{-- <span class="text-danger">No visits yet.</span> --}}
                             <span class="text-danger">لا توجد زيارات حتى الآن.</span>
                         @endif
                     </td>
-                    <td>
-                        @if ($patient->chief_complaint == "badly_aesthetic")
-                            Badly Aesthetic
-                        @elseif($patient->chief_complaint == "severe_pain")
-                            Severe Pain
-                        @else
-                            Mastication
-                        @endif
-                    </td>
-                    <td>{{ $patient->chronic_disease ?? '—' }}</td>
-                    {{-- <td>
-                        <span class="fs-6">({{ $patient->appointment->count() }})</span>
-                    </td> --}}
-                    {{-- <td>
-                        <span class="fs-6">({{ $patient->xray->count() }})</span>
-                    </td> --}}
-                    {{-- <td>{{ $patient->email ?? '—' }}</td> --}}
-                    <td>{{ $patient->phone}}</td>
-                    {{-- <td>{{ $patient->emergency_phone ?? '—' }}</td> --}}
-                    {{-- <td>{{ $patient->whatsapp ?? '—' }}</td> --}}
-                    {{-- <td>{{ \Carbon\Carbon::parse($patient->dob)->format('d-m-Y') }}</td> --}}
-                    <td>{{ \Carbon\Carbon::parse($patient->dob)->diffInYears(\Carbon\Carbon::now()) }}</td>
-                    <td>
-                        {{-- {{ $patient->gender == 'male' ? 'M' : 'F' }} --}}
-                        {{-- {{ $patient->gender == 'male' ? 'ذكر' : 'أنثى' }} --}}
-                        @if($patient->gender == 'female')
-                        <i class="fa fa-venus f-22" aria-hidden="true"></i>
-                        @else
-                        <i class="fa fa-mars f-22" aria-hidden="true"></i>
-                        @endif
-                    </td>
-                    <td>{{ $patient->address ?? '—' }}</td>
-                    {{-- <td>{{ optional($patient->created_at)->tz('Africa/Cairo')->format('d-M-Y') }}</td> --}}
-                    {{-- <td>{{ $patient->updated_at ? optional($patient->updated_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') : '—' }}</td> --}}
-                    {{-- <th>{{ $patient->create_user->username }}</th> --}}
-                    {{-- <th>{{ $patient->update_user->username ?? '—' }}</th> --}}
-                    <th class="hidden-print-view text-center">
-                        {{-- <a class="btn btn-warning text-dark btn-md m-1 px-3" href="{{ route('patients.show', [$patient->id, $patient->first_name]) }}"title="{{ $patient->first_name .' '. $patient->last_name }}"> --}}
-                            <i class="icofont icofont-open-eye f-24"></i>
-                        {{-- </a> --}}
+                    <td>{{ optional($payment->created_at)->tz('Africa/Cairo')->format('d-M-Y') }}</td>
+                    <td>{{ $payment->updated_at ? optional($payment->updated_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') : '—' }}</td>
+                    <th>{{ $payment->create_user->username }}</th>
+                    <th>{{ $payment->update_user->username ?? '—' }}</th>
+                    <th class="text-center hidden-print-view">
+                        <a class="btn btn-info btn-xs px-2" href="{{ route('receipts.show.pdf', [$payment->id]) }}">
+                            <i class="icofont icofont-printer f-26"></i>
+                        </a>
                     </th>
-                    {{-- <th>
+                    <th class="hidden-print-view">
                         <div class="d-flex justify-content-between">
-                            <a class="btn btn-warning text-dark btn-md m-1 px-3" href="{{ route('patients.show', [$patient->id, $patient->first_name]) }}"title="{{ $patient->first_name .' '. $patient->last_name }}">
+                            <a class="btn btn-warning text-dark btn-md m-1 px-3" href="{{ route('payments.show', [$payment->id, $patient->first_name]) }}"title="{{ $patient->first_name .' '. $patient->last_name }}">
                                 <i class="icofont icofont-open-eye f-24"></i>
                             </a>
-                            <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('patients.edit', $patient->id) }}"title="Edit ({{ $patient->first_name .' '. $patient->last_name }})">
+                            <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('payments.edit', $payment->id) }}"title="Edit ({{ $patient->first_name .' '. $patient->last_name }})">
                                 <i class="fa fa-edit f-18"></i>
                             </a>
-                            <form action="{{ route('patients.destroy', $patient->id) }}" method="post">
+                            <form action="{{ route('payments.destroy', $payment->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="return confirm('Are you sure that you want to delete ({{ $patient->first_name . ' '. $patient->last_name }})?');"title="{{"Delete ($patient->first_name $patient->last_name)"}}" class="btn btn-danger btn-md m-1 px-3"><i class="fa fa-trash-o f-18"></i></button>
                             </form>
                         </div>
-                    </th> --}}
+                    </th>
                 </tr>
                 @endforeach
                 </tbody>
@@ -189,12 +181,12 @@
 
     function printPageAndShowMessage() {
         event.preventDefault();
-        if({{ $patients->count() }} > 0) {
+        if({{ $patientPayments->count() }} > 0) {
             printPage();
         } else {
-            // alert('No patients to print.');
-            // alert('لا يوجد مرضى للطباعة.');
-            const msg = '.لا يوجد مرضي للطباعة';
+            // alert('No payments to print.');
+            // alert('لا توجد عمليات دفع للطباعة.');
+            const msg = '.لا توجد عمليات دفع للطباعة';
             Swal.fire({
                 title: '!تحذير',
                 text: msg,
@@ -203,13 +195,13 @@
         }
     }
 
-    if({{ $patients->count() }} < 1){
+    if({{ $patientPayments->count() }} < 1){
         document.addEventListener('keydown', function (event) {
             // Check if the key combination is Ctrl+P (keyCode 80)
             if (event.ctrlKey && (event.key === 'p' || event.key === 'P' || event.keyCode === 80)) {
                 event.preventDefault();
-                // alert('No patients to print.');
-                // alert('لا يوجد مرضى للطباعة.');
+                // alert('No payments to print.');
+                // alert('لا توجد عمليات دفع للطباعة.');
                 return false;
             }
         });

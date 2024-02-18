@@ -117,9 +117,9 @@
                             <i class="icofont icofont-open-eye f-24"></i>
                         </a>
                         {{-- @endif --}}
-                        <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('treatments.edit', $treatment->id) }}"title="Edit ({{ $treatment->procedure_name }})">
+                        {{-- <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('treatments.edit', $treatment->id) }}"title="Edit ({{ $treatment->procedure_name }})">
                             <i class="fa fa-edit f-18"></i>
-                        </a>
+                        </a> --}}
                         <form action="{{ route('treatments.destroy', $treatment->id) }}" method="post">
                             @csrf
                             @method('DELETE')

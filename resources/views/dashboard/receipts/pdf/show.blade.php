@@ -64,11 +64,13 @@
                                             <div dir="rtl">
                                                 <table class="table table-bordered border-dark border border-2">
                                                     <thead>
-                                                        <th class="bg-dark text-light border-secondary">التعريف</th>
-                                                        <th class="bg-dark text-light border-secondary">المحتوي</th>
-                                                        <th class="bg-dark text-light border-secondary">الكمية</th>
-                                                        <th class="bg-dark text-light border-secondary">السعر (ج.م)</th>
-                                                        <th class="bg-dark text-light border-secondary">الاجمالي (ج.م)</th>
+                                                        <tr>
+                                                            <th class="bg-dark text-light border-secondary">التعريف</th>
+                                                            <th class="bg-dark text-light border-secondary">المحتوي</th>
+                                                            <th class="bg-dark text-light border-secondary">الكمية</th>
+                                                            <th class="bg-dark text-light border-secondary">السعر (ج.م)</th>
+                                                            <th class="bg-dark text-light border-secondary">الاجمالي (ج.م)</th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
@@ -76,11 +78,11 @@
                                                             <td>
                                                                 @if($payment->payment_method == 'vodafone_cash')
                                                                     فودافون كاش
-                                                                    @elseif($payment->payment_method == 'credit_card')
+                                                                @elseif($payment->payment_method == 'credit_card')
                                                                     بطاقة إئتمان
-                                                                    @else
+                                                                @else
                                                                     كاش
-                                                                    @endif
+                                                                @endif
                                                             </td>
                                                             <td>-</td>
                                                             <td>-</td>
