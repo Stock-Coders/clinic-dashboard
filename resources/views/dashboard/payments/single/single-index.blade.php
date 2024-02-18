@@ -12,8 +12,11 @@
                 <a class="text-decoration-underline fw-bold" href="{{ route('patients.show', $patient->id) }}">{{ $patient->first_name . ' ' . $patient->last_name }}</a>'s Payments ({{ $patientPayments->count() }})
             </h5>
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <a href="{{ route('dashboard') }}">Dashboard</a> / {{ $patient->first_name . ' ' . $patient->last_name }}'s Payments
+                </div>
+                <div class="col-md-1">
+                    <a href="{{ route('receipts.show-index.pdf',$patient->id) }}" target="_blank" class="btn btn-secondary-gradien">PDF/Print</a>
                 </div>
                 <div class="col-md-3">
                     <a href="{{ route('patient.payments.create', $patient->id) }}" class="btn btn-success-gradien">Create New Payment For {{ $patient->first_name }}</a>
@@ -114,16 +117,15 @@
                         @else
                         —
                         @endif --}}
-                        @if($payment->xrays)
-                            @foreach($payment->xrays as $key => $xray)
-                                <a href="{{ route('x-rays.show', $xray->id) }}" class="text-decoration-none">
-                                    <span class="badge rounded-circle badge-primary"><span class="fw-bold">{{ $xray->id }}</span></span>
-                                </a>
-                                <span class="text-danger fw-bold">{{ $key < $payment->xrays->count() - 1 ? '-' : '' }}</span>
-                            @endforeach
-                        @else
+
+                        @forelse($payment->xrays as $key => $xray)
+                            <a href="{{ route('x-rays.show', $xray->id) }}" class="text-decoration-none">
+                                <span class="badge rounded-circle badge-primary"><span class="fw-bold">{{ $xray->id }}</span></span>
+                            </a>
+                            <span class="text-danger fw-bold">{{ $key < $payment->xrays->count() - 1 ? '-' : '' }}</span>
+                        @empty
                         —
-                        @endif
+                        @endforelse
                     </td>
                     <td>{{ optional($payment->created_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') }}</td>
                     <td>{{ $payment->updated_at ? optional($payment->updated_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') : '—' }}</td>

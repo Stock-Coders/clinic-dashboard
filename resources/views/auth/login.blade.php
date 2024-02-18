@@ -114,7 +114,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card shadow rounded-3">
-                        <div class="card-header h2 text-center fw-bold">{{ __('Login') }}</div>
+                        <div class="card-header h2 text-center fw-bold">
+                            <img src="{{asset('/assets/dashboard/images/custom-images/favicons/light_codex_logo.png')}}" alt="">
+                            {{ __('Login') }}
+                        </div>
                         @if(session()->has('inactivityLogoutMsg'))
                         <div class="text-center">
                             <div class="alert alert-dark text-center w-75 mx-auto">
@@ -259,7 +262,7 @@
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.en.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
     <!-- Plugins JS Ends-->
-    <!-- Theme js-->
+    <!-- Popup js-->
     <script>
         $(document).ready(function(){
             // Show the popup
@@ -279,6 +282,7 @@
             popup.style.display = "block";
         });
     </script>
+    <!-- Theme js-->
     <script src="{{asset('/assets/dashboard/js/script.js')}}"></script>
     <!-- login js-->
     <!-- Plugin used-->

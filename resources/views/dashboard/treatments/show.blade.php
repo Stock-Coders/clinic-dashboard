@@ -35,9 +35,9 @@
                     </div>
                 @endif
             </div>
-            <div class="d-flex justify-content-end">
+            {{-- <div class="d-flex justify-content-end">
                 <a class="btn btn-primary" href="{{ route('treatments.edit', $treatment->id) }}">Edit The Current Treatment</a>
-            </div>
+            </div> --}}
             <strong class="card-title">
                 <p class="fs-5"><span class="text-decoration-underline">Treatment ID:</span> <span class="badge rounded-pill badge-dark">{{ $treatment->id }}</span></p>
                 @if($treatment->prescription_id != null && $treatment->treatment_id == null)

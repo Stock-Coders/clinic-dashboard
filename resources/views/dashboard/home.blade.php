@@ -239,7 +239,7 @@
         <div class="col-xl-6 box-col-12 des-xl-100">
             <div class="row">
                 {{-- Payments --}}
-                {{-- <div class="col-xl-12 col-md-12 col-sm-12 box-col-3 des-xl-25 rate-sec">
+                <div class="col-xl-6 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
                     <div class="card income-card">
                         <div class="card-body text-center">
                             <div class="round-box">
@@ -255,18 +255,18 @@
                             </a>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 {{-- Receipts --}}
-                <div class="col-xl-12 col-md-12 col-sm-12 box-col-3 des-xl-25 rate-sec">
+                <div class="col-xl-6 col-md-6 col-sm-6 box-col-3 des-xl-25 rate-sec">
                     <div class="card income-card">
                         <div class="card-body text-center">
                             <div class="round-box">
                                 <i class="icofont icofont-money-bag f-38"></i>
                             </div>
                             <h5>{{ \App\Models\Payment::count() }}</h5>
-                            <p class="fw-bold fs-6">Payments/Receipts</p>
+                            <p class="fw-bold fs-6">Receipts</p>
                             <span style="color:white;">⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯</span>
-                            <a class="btn-arrow arrow-primary" href="{{ route('payments.index') }}"
+                            <a class="btn-arrow arrow-primary" href="{{ route('receipts.index.pdf') }}"
                             style="color:#FFFFFF; background-color:rgb(95, 95, 95); padding:4%; border-radius:5px; transition: 0.40s ease-in-out;"
                             onMouseOver="this.style.backgroundColor='#BA895D'" onMouseOut="this.style.backgroundColor='rgb(95, 95, 95)'">
                             <i data-feather="navigation"></i>

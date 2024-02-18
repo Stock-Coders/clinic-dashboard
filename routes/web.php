@@ -13,10 +13,9 @@ use App\Http\Controllers\{
     DashboardMaterialTreatmentController, DashboardTreatmentController,
     DashboardPrescriptionTreatmentController, PDF\PatientPDFController,
     PDF\PrescriptionPDFController, PDF\PrescriptionTreatmentPDFController,
-    PDF\AppointmentPDFController, PDF\TreatmentPDFController,
-    DashboardMedicalHistoryController,/* MedicalHistoryPDFController, */
-    DashboardPaymentController, DashboardReceiptController,
-    DashboardContactController
+    PDF\AppointmentPDFController, PDF\TreatmentPDFController, PDF\ReceiptController,
+    DashboardMedicalHistoryController,/* PDF\MedicalHistoryPDFController, */
+    DashboardPaymentController, DashboardContactController
 };
 
 // use GuzzleHttp\Middleware;
@@ -162,7 +161,9 @@ Route::group([
         Route::get('/patient/{patientId}/payment/{paymentId}/edit', [DashboardPaymentController::class, 'editSingle'])->name('patient.payments.edit');
 
         // Receipts routes
-        Route::get('/receipts/{id}', [DashboardReceiptController::class, 'show'])->name('receipts.show.pdf');
+        Route::get('/pdf/receipts', [ReceiptController::class, 'index'])->name('receipts.index.pdf');
+        Route::get('/receipts/{id}', [ReceiptController::class, 'show'])->name('receipts.show.pdf');
+        Route::get('/patient/{id}/pdf/receipts', [ReceiptController::class, 'showIndex'])->name('receipts.show-index.pdf');
 
         // Contacts routes
         Route::resource('/contacts', DashboardContactController::class);

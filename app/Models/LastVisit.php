@@ -24,8 +24,10 @@ class LastVisit extends Model
         parent::boot();
 
         // Event listener for creating a new last visit
-        static::creating(function ($patient) {
-            $patient->create_user_id = auth()->check() ? auth()->user()->id : random_int(1, 2); // random_int() is the default value of the create user with id 1 to 2 randomly (this is used when submitting rows from the LastVisitSeeder.php)
+        static::creating(function ($lastVisit) {
+            $lastVisit->create_user_id = auth()->check() ? auth()->user()->id : random_int(1, 2); // random_int() is the default value of the create user with id 1 to 2 randomly (this is used when submitting rows from the LastVisitSeeder.php)
+            $lastVisit->created_at = now(); // Set "created_at" to current timestamp
+
         });
     }
 
