@@ -110,7 +110,7 @@
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="{{asset('/assets/dashboard/js/script.js')}}"></script>
-    <script src="{{asset('/assets/dashboard/js/theme-customizer/customizer.js')}}"></script>
+    {{-- <script src="{{asset('/assets/dashboard/js/theme-customizer/customizer.js')}}"></script> --}}
     <!-- Plugin used-->
     @stack('scripts')
   </body>
