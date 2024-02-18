@@ -189,7 +189,7 @@
                                         <p class="mb-0 m-t-20">
                                             <ol type="1">
                                                 @forelse ($patient->payment as $patientPayment)
-                                                <li><a class="text-decoration-underline fw-bold" href="{{ route('payments.show', $patientPayment->id) }}">{{ $patientPayment->id }}</a> ({{ \Carbon\Carbon::createFromFormat('Y-m-d', $patientPayment->payment_date)->format('d-M-Y') . ' | ' . \Carbon\Carbon::parse($patientPayment->payment_time)->tz('Africa/Cairo')->format('h:i A') }})</li>
+                                                <li><a class="text-decoration-underline fw-bold" href="{{ route('receipts.show.pdf', $patientPayment->id) }}">{{ $patientPayment->id }}</a> ({{ \Carbon\Carbon::createFromFormat('Y-m-d', $patientPayment->payment_date)->format('d-M-Y') . ' | ' . \Carbon\Carbon::parse($patientPayment->payment_time)->tz('Africa/Cairo')->format('h:i A') }})</li>
                                                 @empty
                                                 <span class="text-muted">No Payments yet.</span>
                                                 @endforelse
