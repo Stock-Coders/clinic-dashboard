@@ -122,16 +122,15 @@
                         @else
                         —
                         @endif --}}
-                        @if($payment->xrays)
-                            @foreach($payment->xrays as $key => $xray)
-                                <a href="{{ route('x-rays.show', $xray->id) }}" class="text-decoration-none">
-                                    <span class="badge rounded-circle badge-primary"><span class="fw-bold">{{ $xray->id }}</span></span>
-                                </a>
-                                <span class="text-danger fw-bold">{{ $key < $payment->xrays->count() - 1 ? '-' : '' }}</span>
-                            @endforeach
-                        @else
+                        
+                        @forelse($payment->xrays as $key => $xray)
+                            <a href="{{ route('x-rays.show', $xray->id) }}" class="text-decoration-none">
+                                <span class="badge rounded-circle badge-primary"><span class="fw-bold">{{ $xray->id }}</span></span>
+                            </a>
+                            <span class="text-danger fw-bold">{{ $key < $payment->xrays->count() - 1 ? '-' : '' }}</span>
+                        @empty
                         —
-                        @endif
+                        @endforelse
                     </td>
                     <td>{{ optional($payment->created_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') }}</td>
                     <td>{{ $payment->updated_at ? optional($payment->updated_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') : '—' }}</td>

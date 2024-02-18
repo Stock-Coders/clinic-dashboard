@@ -215,14 +215,12 @@
                 <strong>{{ $message }}</strong>
             </span>
          @enderror
-    @else($appointment->appointment_id == null && $appointment->prescription_id != null) <!-- If the appoitment is indirectly inserted in the treatment through the prescription -->
+    {{-- @else($appointment->appointment_id == null && $appointment->prescription_id != null) <!-- If the appoitment is indirectly inserted in the treatment through the prescription -->
         <select class="form-control border-1 border-dark">
             <option value="{{ $appointment->prescription->appointment_id }}" selected disabled>
                 ({{ $appointment->prescription->appointment_id }}) - {{ $appointment->prescription->appointment->patient->first_name . ' ' . $appointment->prescription->appointment->patient->last_name }}
             </option>
         </select>
-        <input class="form-control border-1 border-dark mb-2" placeholder="" value="{{ '('. $treatment->prescription->appointment_id . ') - ' .  $treatment->prescription->appointment->patient->first_name . ' ' . $treatment->prescription->appointment->patient->last_name }}" disabled readonly>
+        <input class="form-control border-1 border-dark mb-2" placeholder="" value="{{ '('. $treatment->prescription->appointment_id . ') - ' .  $treatment->prescription->appointment->patient->first_name . ' ' . $treatment->prescription->appointment->patient->last_name }}" disabled readonly> --}}
     @endif
 </div>
-
-{{ dd(old('treatment_id')) }}
