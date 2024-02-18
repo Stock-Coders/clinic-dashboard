@@ -16,7 +16,7 @@ class PrescriptionRequest extends FormRequest
 
     public function onCreateOrUpdate(){
         $rules = [
-            'prescription' => 'required|string|max:2000',
+            'prescription' => 'required|max:3000',
             'allergy'      => 'nullable|string|max:255',
             'next_visit'   => ['nullable', 'date', 'after_or_equal:' . now()->format('Y-m-d')] // Restriction for choosing the past dates, only allowed to choose today or any future date
         ];

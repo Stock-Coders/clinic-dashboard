@@ -224,8 +224,3 @@
         <input class="form-control border-1 border-dark mb-2" placeholder="" value="{{ '('. $treatment->prescription->appointment_id . ') - ' .  $treatment->prescription->appointment->patient->first_name . ' ' . $treatment->prescription->appointment->patient->last_name }}" disabled readonly> --}}
     @endif
 </div>
-<<<<<<< HEAD
-
-{{-- {{ dd(old('treatment_id')) }} --}}
-=======
->>>>>>> e481b7231257c384bac5474727534c1dc7b3bf67
