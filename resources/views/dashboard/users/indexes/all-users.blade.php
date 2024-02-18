@@ -16,9 +16,11 @@
                 <div class="col-md-9">
                     <a href="{{ route('dashboard') }}">Dashboard</a> / <a href="{{ route('users.UsersIndex') }}">Users</a> / All Users
                 </div>
+                @if(auth()->user()->user_type != "employee")
                 <div class="col-md-3">
                     <a href="{{ route('users.create') }}" class="btn btn-success-gradien">Create New User</a>
                 </div>
+                @endif
             </div>
           </div>
           <div class="card-body">

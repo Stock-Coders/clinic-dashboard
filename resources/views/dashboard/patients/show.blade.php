@@ -58,7 +58,7 @@
                                     <li class="nav-item"><a class="nav-link" id="medical-history-tab" data-bs-toggle="tab" href="#medical-history" role="tab" aria-controls="medical-history" aria-selected="true">Medical History (0)</a>
                                         <div class="material-border"></div>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" id="receipts-tab" data-bs-toggle="tab" href="#receipts" role="tab" aria-controls="receipts" aria-selected="true">Receipts</a>
+                                    <li class="nav-item"><a class="nav-link" id="receipts-tab" data-bs-toggle="tab" href="#receipts" role="tab" aria-controls="receipts" aria-selected="true">Receipts ({{ $patient->payment->count() }})</a>
                                         <div class="material-border"></div>
                                     </li>
                                 </ul>
@@ -186,7 +186,15 @@
                                         <p class="mb-0 m-t-20">Lorem medical-history is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1502s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
                                     </div>
                                     <div class="tab-pane fade" id="receipts" role="tabpanel" aria-labelledby="receipts-tab">
-                                        <p class="mb-0 m-t-20">Lorem receipts is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1503s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                                        <p class="mb-0 m-t-20">
+                                            <ol type="1">
+                                                @forelse ($patient->payment as $patientPayment)
+                                                <li><a class="text-decoration-underline fw-bold" href="{{ route('payments.show', $patientPayment->id) }}">{{ $patientPayment->id }}</a> ({{ \Carbon\Carbon::createFromFormat('Y-m-d', $patientPayment->payment_date)->format('d-M-Y') . ' | ' . \Carbon\Carbon::parse($patientPayment->payment_time)->tz('Africa/Cairo')->format('h:i A') }})</li>
+                                                @empty
+                                                <span class="text-muted">No Payments yet.</span>
+                                                @endforelse
+                                            </ol>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

@@ -24,12 +24,15 @@ class UserController extends Controller
             $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
             return view('dashboard.users.indexes.all-users', compact('users', 'authUserEmail', 'allowedUsersEmails', 'developersEmails'));
         }
-        else{
+        elseif(auth()->user()->user_type === "developer"){
             $users = User::all();
             $authUserEmail = auth()->user()->email;
             $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
             $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
             return view('dashboard.users.indexes.all-users', compact('users', 'authUserEmail', 'allowedUsersEmails', 'developersEmails'));
+        }
+        else{
+            return abort(403);
         }
     }
 
