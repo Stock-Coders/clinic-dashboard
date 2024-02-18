@@ -13,10 +13,9 @@ use App\Http\Controllers\{
     DashboardMaterialTreatmentController, DashboardTreatmentController,
     DashboardPrescriptionTreatmentController, PDF\PatientPDFController,
     PDF\PrescriptionPDFController, PDF\PrescriptionTreatmentPDFController,
-    PDF\AppointmentPDFController, PDF\TreatmentPDFController,
+    PDF\AppointmentPDFController, PDF\TreatmentPDFController, PDF\ReceiptController,
     DashboardMedicalHistoryController,/* MedicalHistoryPDFController, */
-    DashboardPaymentController, PDF\ReceiptController,
-    DashboardContactController
+    DashboardPaymentController, DashboardContactController
 };
 
 // use GuzzleHttp\Middleware;
