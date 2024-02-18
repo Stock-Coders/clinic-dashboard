@@ -68,6 +68,29 @@
             transform: translateY(-50%);
             cursor: pointer;
         }
+
+        #popup {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999; /* Ensure the pop-up is on top of other elements */
+        }
+
+        #popup img {
+            max-width: 100%;
+        }
+
+        #popup span {
+            display: block;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 10px;
+        }
     </style>
 </head>
     <body>
@@ -87,9 +110,22 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card shadow rounded-3">
-                        <div class="card-header h2 text-center fw-bold">{{ __('Register') }}</div>
+                        <div class="card-header h2 text-center fw-bold">
+                            <img src="{{asset('/assets/dashboard/images/custom-images/favicons/light_codex_logo.png')}}" alt="">
+                            {{ __('Register') }}
+                        </div>
 
                         <div class="card-body">
+                            <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
+                                <div class="d-flex align-items-center flex-column">
+                                    <img src="{{asset('/assets/dashboard/images/custom-images/logos/light_codex_full_logo.png')}}" alt="" width="600">
+                                    <span class="text-center fw-bold fs-2 border border-2 border-dark p-3 rounded shadow">
+                                        احلم و احنا نحقق
+                                        <br/>
+                                        You Dream, We Implement
+                                    </span>
+                                </div>
+                            </div>
                             <form method="POST" action="{{ route('dashboard.register') }}">
                                 @csrf
 
@@ -239,6 +275,26 @@
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.en.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
     <!-- Plugins JS Ends-->
+    <!-- Popup js-->
+    <script>
+        $(document).ready(function(){
+            // Show the popup
+            $('#popup').fadeIn();
+
+            // Hide the popup after 3 seconds
+            setTimeout(function(){
+                $('#popup').fadeOut();
+            }, 4000);
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Wait for the DOM content to be fully loaded
+            // Get the pop-up element
+            var popup = document.getElementById("popup");
+            // Display the pop-up
+            popup.style.display = "block";
+        });
+    </script>
     <!-- Theme js-->
     <script src="{{asset('/assets/dashboard/js/script.js')}}"></script>
     <!-- login js-->
