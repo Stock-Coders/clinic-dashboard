@@ -31,142 +31,133 @@
                 <h6>{{ ucfirst(auth()->user()->user_type) }}s Dashboard</h6>
               </div>
             </li>
-            {{-- Start all authenticated users section - Any user_type will be able to see this section --}}
             <li class="dropdown"><a class="nav-link" href="{{ route('dashboard') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
-            {{-- End all authenticated users --}}
-            @if (auth()->user()->user_type === "doctor" || auth()->user()->user_type === "developer")
-                @if (auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
+
+            @if (auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
                 auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
                 auth()->user()->email === "stockcoders99@gmail.com")
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
-                        <ul class="nav-submenu menu-content">
-                            <li>
-                                <a href="{{ route('users.UsersIndex') }}">
-                                    All Users
-                                    @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                                    auth()->user()->email === "stockcoders99@gmail.com")
-                                        ({{ \App\Models\User::count() }})
-                                    @else
-                                        ({{ \App\Models\User::where('user_type', '!==', 'developer')->count() }})
-                                    @endif
-                                </a>
-                            </li>
-                            <li><a href="{{ route('users.DoctorsIndex') }}">All Doctors ({{ \App\Models\User::ofType('doctor')->count() }})</a></li>
-                            <li><a href="{{ route('users.EmployeesIndex') }}">All Employees ({{ \App\Models\User::ofType('employee')->count() }})</a></li>
-                            @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                            auth()->user()->email === "stockcoders99@gmail.com")
-                            <li><a href="{{ route('users.DevelopersIndex') }}">All Developers ({{ \App\Models\User::ofType('developer')->count() }})</a></li>
-                            @endif
-                            <li><a href="{{ route('users.create') }}">Create User</a></li>
-                        </ul>
-                    </li>
-                    {{-- Sidebar Patient --}}
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user"></i><span>Patients</span></a>
-                        <ul class="nav-submenu menu-content">
-                            <li><a href="{{ route('patients.index') }}">All Patients ({{ \App\Models\Patient::count() }})</a></li>
-                            <li><a href="{{ route('patients.lastVisitsIndex') }}"><i class="icofont icofont-ui-calendar f-20"></i> Last Visits ({{ \App\Models\LastVisit::count() }})</a></li>
-                            <li><a href="{{ route('x-rays.index') }}"><i class="icofont icofont-tooth f-20"></i> X-rays ({{ \App\Models\XRay::count() }})</a></li>
-                            <li><a href="{{ route('analyses.index') }}"><i class="icofont icofont-file-alt f-20"></i> Analyses ({{ \App\Models\Analysis::count() }})</a></li>
-                            <li><a href="{{ route('medical-histories.index') }}"><i class="icofont icofont-history f-20"></i> Medical Histories ({{ \App\Models\MedicalHistory::count() }})</a></li>
-                            <li><a href="{{ route('patients.create') }}">Create Patient</a></li>
-                        </ul>
-                    </li>
-                    {{-- End Patient --}}
 
-                    {{-- Sidebar Appointments --}}
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="bell"></i><span>Appointments</span></a>
-                        <ul class="nav-submenu menu-content">
-                            <li><a href="{{ route('appointments.index') }}">All Appointments ({{ \App\Models\Appointment::count() }})</a></li>
-                            <li><a href="{{ route('appointments.create') }}">Create Appointment</a></li>
-                            @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                            auth()->user()->email === "stockcoders99@gmail.com")
-                            <li><a href="{{ route('appointments.trash') }}">All Trashed Appointment ({{ \App\Models\Appointment::onlyTrashed()->count() }})</a></li>
-                            @endif
-                        </ul>
-                    </li>
-                    {{-- End Appointments --}}
+            @endif
 
-                    {{-- Sidebar Prescriptions --}}
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-text"></i><span>Prescriptions</span></a>
-                        <ul class="nav-submenu menu-content">
-                            <li><a href="{{ route('prescriptions.index') }}">All Prescriptions ({{ \App\Models\Prescription::count() }})</a></li>
-                            <li><a href="{{ route('prescriptions.create') }}">Create Prescription</a></li>
-                        </ul>
-                    </li>
-                    {{-- End Prescriptions --}}
-
-                    {{-- Sidebar Treatments --}}
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="calendar"></i><span>Treatments</span></a>
-                        <ul class="nav-submenu menu-content">
-                            <li><a href="{{ route('treatments.index') }}">All Treatments ({{ \App\Models\Treatment::count() }})</a></li>
-                            <li><a href="{{ route('treatments.create') }}">Create Treatment</a></li>
-                            <li><a href="{{ route('prescriptions-treatments.index') }}">All Treatments' Prescriptions ({{ \App\Models\PrescriptionTreatment::count() }})</a></li>
-                            <li><a href="{{ route('prescriptions-treatments.create') }}">Create Prescription for Treatment</a></li>
-                        </ul>
-                    </li>
-                    {{-- End Treatments --}}
-
-                    {{-- Sidebar Materials Treatments --}}
-                    <li class="dropdown">
-                        <a class="nav-link" href="{{ route('materials-treatments.index') }}"><i data-feather="grid"></i><span>Treatments' Materials</span></a>
-                        {{-- <ul class="nav-submenu menu-content">
-                            <li><a href="{{ route('treatments.index') }}">All Treatments ({{ \App\Models\Treatment::count() }})</a></li>
-                            <li><a href="{{ route('treatments.create') }}">Create Treatment</a></li>
-                            <li><a href="{{ route('prescriptions-treatments.index') }}">All Treatments' Prescriptions ({{ \App\Models\PrescriptionTreatment::count() }})</a></li>
-                            <li><a href="{{ route('prescriptions-treatments.create') }}">Create Prescription for Treatment</a></li>
-                        </ul> --}}
-                    </li>
-                    {{-- End Materials Treatments --}}
-
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="aperture"></i><span>Representatives</span></a>
-                        <ul class="nav-submenu menu-content">
-                            <li><a href="{{ route('representatives.index') }}">All Representatives ({{ \App\Models\Representative::count() }})</a></li>
-                            <li><a href="{{ route('representatives.create') }}">Create Representative</a></li>
-                        </ul>
-                    </li>
-                @else {{-- Any other "doctor" or "developer" from the mentioned previous if statement --}}
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
-                        <ul class="nav-submenu menu-content">
-                            <li>
-                                <a href="{{ route('users.UsersIndex') }}">
-                                    All Users
-                                    ({{ \App\Models\User::where('user_type', '!==', 'developer')->count() }})
-                                </a>
-                            </li>
-                            <li><a href="{{ route('users.DoctorsIndex') }}">All Doctors ({{ \App\Models\User::ofType('doctor')->count() }})</a></li>
-                            <li><a href="{{ route('users.EmployeesIndex') }}">All Employees ({{ \App\Models\User::ofType('employee')->count() }})</a></li>
-                        </ul>
-                    </li>
-                @endif
-            @elseif (auth()->user()->user_type === "employee")
+            @if (auth()->user()->user_type === "doctor" || auth()->user()->user_type === "employee" || auth()->user()->user_type === "developer")
+                {{-- Start Users --}}
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Users</span></a>
                     <ul class="nav-submenu menu-content">
-                        <li><a href="{{ route('users.UsersIndex') }}">All Users</a></li>
-                        <li><a href="{{ route('users.DoctorsIndex') }}">All Doctors</a></li>
-                        <li><a href="{{ route('users.EmployeesIndex') }}">All Employees</a></li>
+                        <li>
+                            <a href="{{ route('users.UsersIndex') }}">
+                                All Users
+                                @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                                auth()->user()->email === "stockcoders99@gmail.com")
+                                    ({{ \App\Models\User::count() }})
+                                @else
+                                    ({{ \App\Models\User::where('user_type', '!==', 'developer')->count() }})
+                                @endif
+                            </a>
+                        </li>
+                        <li><a href="{{ route('users.DoctorsIndex') }}">All Doctors ({{ \App\Models\User::ofType('doctor')->count() }})</a></li>
+                        <li><a href="{{ route('users.EmployeesIndex') }}">All Employees ({{ \App\Models\User::ofType('employee')->count() }})</a></li>
+                        @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                        auth()->user()->email === "stockcoders99@gmail.com")
+                            <li><a href="{{ route('users.DevelopersIndex') }}">All Developers ({{ \App\Models\User::ofType('developer')->count() }})</a></li>
+                        @endif
+                        @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
+                        auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                        auth()->user()->email === "stockcoders99@gmail.com")
+                            <li><a href="{{ route('users.create') }}">Create User</a></li>
+                        @endif
                     </ul>
                 </li>
-            @elseif (auth()->check() && (auth()->user()->user_type !== "doctor" || auth()->user()->user_type !== "employee" || auth()->user()->user_type !== "developer"))
-                {{-- An authenticated user, but the user_type is something else other than "doctor", "employee" or "developer"  --}}
+                {{-- End Users --}}
+                {{-- Start Patient --}}
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user"></i><span>Patients</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="{{ route('patients.index') }}">All Patients ({{ \App\Models\Patient::count() }})</a></li>
+                        <li><a href="{{ route('patients.lastVisitsIndex') }}"><i class="icofont icofont-ui-calendar f-20"></i> Last Visits ({{ \App\Models\LastVisit::count() }})</a></li>
+                        <li><a href="{{ route('x-rays.index') }}"><i class="icofont icofont-tooth f-20"></i> X-rays ({{ \App\Models\XRay::count() }})</a></li>
+                        <li><a href="{{ route('analyses.index') }}"><i class="icofont icofont-file-alt f-20"></i> Analyses ({{ \App\Models\Analysis::count() }})</a></li>
+                        <li><a href="{{ route('medical-histories.index') }}"><i class="icofont icofont-history f-20"></i> Medical Histories ({{ \App\Models\MedicalHistory::count() }})</a></li>
+                        <li><a href="{{ route('patients.create') }}">Create Patient</a></li>
+                    </ul>
+                </li>
+                {{-- End Patient --}}
+                {{-- Start Materials --}}
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="plus-square"></i><span>Materials</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="{{ route('materials.index') }}">All Materials ({{ \App\Models\Material::count() }})</a></li>
+                        @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "stockcoders99@gmail.com")
+                        <li><a href="{{ route('materials.create') }}">Create Material</a></li>
+                        @endif
+                    </ul>
+                </li>
+                {{-- End Materials --}}
+                {{-- Start Appointments --}}
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="bell"></i><span>Appointments</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="{{ route('appointments.index') }}">All Appointments ({{ \App\Models\Appointment::count() }})</a></li>
+                        <li><a href="{{ route('appointments.create') }}">Create Appointment</a></li>
+                        @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                        auth()->user()->email === "stockcoders99@gmail.com")
+                        <li><a href="{{ route('appointments.trash') }}">All Trashed Appointment ({{ \App\Models\Appointment::onlyTrashed()->count() }})</a></li>
+                        @endif
+                    </ul>
+                </li>
+                {{-- End Appointments --}}
+                {{-- Start Prescriptions --}}
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-text"></i><span>Prescriptions</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="{{ route('prescriptions.index') }}">All Prescriptions ({{ \App\Models\Prescription::count() }})</a></li>
+                        @if(auth()->user()->user_type == "doctor"  || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                        auth()->user()->email === "stockcoders99@gmail.com")
+                            <li><a href="{{ route('prescriptions.create') }}">Create Prescription</a></li>
+                        @endif
+                    </ul>
+                </li>
+                {{-- End Prescriptions --}}
+                {{-- Start Treatments --}}
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="calendar"></i><span>Treatments</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="{{ route('treatments.index') }}">All Treatments ({{ \App\Models\Treatment::count() }})</a></li>
+                        <li><a href="{{ route('treatments.create') }}">Create Treatment</a></li>
+                        <li><a href="{{ route('prescriptions-treatments.index') }}">All Treatments' Prescriptions ({{ \App\Models\PrescriptionTreatment::count() }})</a></li>
+                        @if(auth()->user()->user_type == "doctor"  || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                        auth()->user()->email === "stockcoders99@gmail.com")
+                            <li><a href="{{ route('prescriptions-treatments.create') }}">Create Prescription for Treatment</a></li>
+                        @endif
+                    </ul>
+                </li>
+                {{-- End Treatments --}}
+                {{-- Start Materials Treatments --}}
+                @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
+                auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                auth()->user()->email === "stockcoders99@gmail.com")
+                    <li class="dropdown">
+                        <a class="nav-link" href="{{ route('materials-treatments.index') }}"><i data-feather="grid"></i><span>Treatments' Materials</span></a>
+                    </li>
+                @endif
+                {{-- End Materials Treatments --}}
+                {{-- Start Representatives --}}
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="aperture"></i><span>Representatives</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="{{ route('representatives.index') }}">All Representatives ({{ \App\Models\Representative::count() }})</a></li>
+                        @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
+                        auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                        auth()->user()->email === "stockcoders99@gmail.com")
+                            <li><a href="{{ route('representatives.create') }}">Create Representative</a></li>
+                        @endif
+                    </ul>
+                </li>
+                {{-- End Representatives --}}
+                {{-- Start Payments --}}
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="database"></i><span>Payments</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="{{ route('payments.index') }}">All Payments ({{ \App\Models\Payment::count() }})</a></li>
+                        <li><a href="{{ route('payments.create') }}">Create Payment</a></li>
+                    </ul>
+                </li>
+                {{-- End Payments --}}
+                
             @endif
-            {{-- Start all authenticated users section - Any user_type will be able to see this section --}}
-            <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="plus-square"></i><span>Materials</span></a>
-                <ul class="nav-submenu menu-content">
-                    <li><a href="{{ route('materials.index') }}">All Materials ({{ \App\Models\Material::count() }})</a></li>
-                    @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "stockcoders99@gmail.com")
-                    <li><a href="{{ route('materials.create') }}">Create Material</a></li>
-                    @endif
-                </ul>
-            </li>
-            <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="database"></i><span>Payments</span></a>
-                <ul class="nav-submenu menu-content">
-                    <li><a href="{{ route('payments.index') }}">All Payments ({{ \App\Models\Payment::count() }})</a></li>
-                    <li><a href="{{ route('payments.create') }}">Create Payment</a></li>
-                </ul>
-            </li>
             <li><a class="nav-link menu-title link-nav" href="javascript:void(0)"><i data-feather="headphones"></i><span>Support Ticket</span></a></li>
-            {{-- End all authenticated users section --}}
-            {{-- Only avaialble for specific users (creators) --}}
             @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "stockcoders99@gmail.com")
             <li class="dropdown"><a class="nav-link" href="{{ route('dashboard.debugging') }}"><i data-feather="cpu"></i><span>Debugging Tools</span></a></li>
             @endif
