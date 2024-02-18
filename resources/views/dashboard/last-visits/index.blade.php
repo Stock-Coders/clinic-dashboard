@@ -40,7 +40,7 @@
                             {{ $lastVisit->patient->first_name . ' ' . $lastVisit->patient->last_name }}
                         </a>
                     </td>
-                    <th>{{ optional($lastVisit->created_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') }}</th>
+                    <td>{{ \Carbon\Carbon::parse($lastVisit->created_at)->timezone('Africa/Cairo')->format('d-M-Y, h:i A') }}</td>
                     <th>{{ $lastVisit->create_user->username }}</th>
                     @if(in_array($authUserEmail, $allowedUsersEmails))
                     <th>

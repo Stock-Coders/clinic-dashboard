@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('last_visit_date');
             $table->foreignId('patient_id')->constrained('patients');
             $table->foreignId('create_user_id')->constrained('users');
-            $table->timestamp('created_at')->default(now());
+            $table->timestamp('created_at');
         });
     }
 

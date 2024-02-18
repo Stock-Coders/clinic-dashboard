@@ -14,7 +14,7 @@ use App\Http\Controllers\{
     DashboardPrescriptionTreatmentController, PDF\PatientPDFController,
     PDF\PrescriptionPDFController, PDF\PrescriptionTreatmentPDFController,
     PDF\AppointmentPDFController, PDF\TreatmentPDFController, PDF\ReceiptController,
-    DashboardMedicalHistoryController,/* MedicalHistoryPDFController, */
+    DashboardMedicalHistoryController,/* PDF\MedicalHistoryPDFController, */
     DashboardPaymentController, DashboardContactController
 };
 
