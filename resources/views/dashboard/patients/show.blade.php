@@ -183,7 +183,9 @@
                                         </p>
                                     </div>
                                     <div class="tab-pane fade" id="medical-history" role="tabpanel" aria-labelledby="medical-history-tab">
-                                        <p class="mb-0 m-t-20">Lorem medical-history is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1502s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                                        <p class="mb-0 m-t-20">
+                                            No Medical History yet.
+                                        </p>
                                     </div>
                                     <div class="tab-pane fade" id="receipts" role="tabpanel" aria-labelledby="receipts-tab">
                                         <p class="mb-0 m-t-20">
