@@ -15,7 +15,7 @@ use App\Http\Controllers\{
     PDF\PrescriptionPDFController, PDF\PrescriptionTreatmentPDFController,
     PDF\AppointmentPDFController, PDF\TreatmentPDFController,
     DashboardMedicalHistoryController,/* MedicalHistoryPDFController, */
-    DashboardPaymentController, DashboardReceiptController,
+    DashboardPaymentController, PDF\ReceiptController,
     DashboardContactController
 };
 
@@ -162,7 +162,7 @@ Route::group([
         Route::get('/patient/{patientId}/payment/{paymentId}/edit', [DashboardPaymentController::class, 'editSingle'])->name('patient.payments.edit');
 
         // Receipts routes
-        Route::get('/receipts/{id}', [DashboardReceiptController::class, 'show'])->name('receipts.show.pdf');
+        Route::get('/receipts/{id}', [ReceiptController::class, 'show'])->name('receipts.show.pdf');
 
         // Contacts routes
         Route::resource('/contacts', DashboardContactController::class);

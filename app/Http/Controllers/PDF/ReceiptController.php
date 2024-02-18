@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\PDF;
 
+use App\Http\Controllers\Controller;
 // use App\Models\Receipt;
 // use App\Http\Requests\ReceiptRequest;
 use App\Models\Payment;
 
-class DashboardReceiptController extends Controller
+class ReceiptController extends Controller
 {
     /**
      * Display the specified resource.
