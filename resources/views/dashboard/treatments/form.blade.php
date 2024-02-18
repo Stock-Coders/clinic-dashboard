@@ -225,4 +225,4 @@
     @endif
 </div>
 
-{{ dd(old('treatment_id')) }}
+{{-- {{ dd(old('treatment_id')) }} --}}

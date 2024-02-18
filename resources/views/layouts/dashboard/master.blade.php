@@ -61,7 +61,7 @@
 <!-- Page Sidebar Ends-->
     <div class="page-body">
         {{-- @include('layouts.dashboard.includes.bookmark') --}}
-        <!-- Container-fluid starts-->
+        <!-- Container-fluid starts-->=
         @yield('content')
     </div>
 <!-- footer start-->
@@ -93,7 +93,7 @@
     <script src="{{asset('/assets/dashboard/js/counter/jquery.counterup.min.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/counter/counter-custom.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/custom-card/custom-card.js')}}"></script>
-    {{-- <script src="{{asset('/assets/dashboard/js/notify/bootstrap-notify.min.js')}}"></script> --}}
+    <script src="{{asset('/assets/dashboard/js/notify/bootstrap-notify.min.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/vector-map/jquery-jvectormap-2.0.2.min.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/vector-map/map/jquery-jvectormap-world-mill-en.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/vector-map/map/jquery-jvectormap-us-aea-en.js')}}"></script>
@@ -103,14 +103,14 @@
     <script src="{{asset('/assets/dashboard/js/vector-map/map/jquery-jvectormap-in-mill.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/vector-map/map/jquery-jvectormap-asia-mill.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/dashboard/default.js')}}"></script>
-    {{-- <script src="{{asset('/assets/dashboard/js/notify/index.js')}}"></script> --}}
+    <script src="{{asset('/assets/dashboard/js/notify/index.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.en.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="{{asset('/assets/dashboard/js/script.js')}}"></script>
-    {{-- <script src="{{asset('/assets/dashboard/js/theme-customizer/customizer.js')}}"></script> --}}
+    <script src="{{asset('/assets/dashboard/js/theme-customizer/customizer.js')}}"></script>
     <!-- Plugin used-->
     @stack('scripts')
   </body>

@@ -81,13 +81,19 @@
 
         #popup img {
             max-width: 100%;
+
         }
 
         #popup span {
             display: block;
             margin-top: 20px;
-            background-color: #fff;
+            background-color: #0000006e;
+            /* font-style:oblique; */
+            font-size: 3rem;
             padding: 10px;
+            color: #ffffffe1;
+            font-family: Lucida Handwriting;
+            text-shadow: 0 0 12px #c637377d, 0 0 10px #b516167d;
         }
     </style>
 </head>
@@ -120,7 +126,7 @@
                             <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
                                 <div class="d-flex align-items-center flex-column">
                                     <img src="{{asset('/assets/dashboard/images/custom-images/logos/light_codex_full_logo.png')}}" alt="" width="600">
-                                    <span class="text-center fw-bold fs-2 border border-2 border-dark p-3 rounded shadow">
+                                    <span class="text-center fw-bold  border border-2 border-dark p-3 rounded shadow">
                                         احلم و احنا نحقق
                                         <br/>
                                         You Dream, We Implement
