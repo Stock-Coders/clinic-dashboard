@@ -45,7 +45,7 @@
                         </div>
                         <div class="card">
                             <div class="card-header pb-0">
-                                <h5><span class="text-decoration-underline">Diagnosis:</span>
+                                <h5 class="mb-3"><span class="text-decoration-underline">Diagnosis:</span>
                                     @if($appointment->diagnosis)
                                     {{ $appointment->diagnosis }}
                                     @else

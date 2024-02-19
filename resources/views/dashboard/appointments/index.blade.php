@@ -71,7 +71,7 @@
                         @if($appointment->diagnosis != null)
                             <span>{{ $appointment->diagnosis }}</span>
                         @else
-                            <span class="text-danger">Unsigned</span>
+                            <span class="text-danger fw-bold">Unsigned</span>
                         @endif
                     </td>
                     <td class="text-center">
