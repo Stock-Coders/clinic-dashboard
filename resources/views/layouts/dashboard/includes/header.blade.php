@@ -23,7 +23,7 @@
       <div class="nav-right col pull-right right-menu p-0">
         <ul class="nav-menus">
           <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
-          <li class="onhover-dropdown">
+          {{-- <li class="onhover-dropdown">
             <div class="bookmark-box"><i data-feather="star"></i></div>
             <div class="bookmark-dropdown onhover-show-div">
               <div class="form-group mb-0">
@@ -39,7 +39,7 @@
                 <li class="add-to-bookmark"><i class="bookmark-icon" data-feather="airplay"></i>Widgets<span class="pull-right"><i data-feather="star">   </i></span></li>
               </ul>
             </div>
-          </li>
+          </li> --}}
           <li class="onhover-dropdown">
             <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
             <ul class="notification-dropdown onhover-show-div">
@@ -79,7 +79,7 @@
           <li>
             <div class="mode"><i class="fa fa-moon-o"></i></div>
           </li>
-          <li class="onhover-dropdown"><i data-feather="message-square"></i>
+          {{-- <li class="onhover-dropdown"><i data-feather="message-square"></i>
             <ul class="chat-dropdown onhover-show-div">
               <li>
                 <div class="media"><img class="img-fluid rounded-circle me-3" src="{{asset('/assets/dashboard/images/user/4.jpg')}}" alt="">
@@ -107,7 +107,7 @@
               </li>
               <li class="text-center"> <a class="f-w-700" href="javascript:void(0)">See All     </a></li>
             </ul>
-          </li>
+          </li> --}}
           @auth
             <li class="onhover-dropdown p-0">
                 <a class="dropdown-item btn btn-primary-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.querySelector('#logout-form').submit();">

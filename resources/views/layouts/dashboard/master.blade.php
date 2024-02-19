@@ -61,7 +61,7 @@
 <!-- Page Sidebar Ends-->
     <div class="page-body">
         {{-- @include('layouts.dashboard.includes.bookmark') --}}
-        <!-- Container-fluid starts-->=
+        <!-- Container-fluid starts-->
         @yield('content')
     </div>
 <!-- footer start-->
@@ -104,78 +104,7 @@
     <script src="{{asset('/assets/dashboard/js/vector-map/map/jquery-jvectormap-asia-mill.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/dashboard/default.js')}}"></script>
     {{-- <script src="{{asset('/assets/dashboard/js/notify/index.js')}}"></script> --}}
-    {{-- @if(auth()->user()->user_type == "doctor")
-        @php
-            $newAppointments = \App\Models\Appointment::where('doctor_id', auth()->user()->id)
-                ->where('created_at', '>=', now()->subHours(24)) // Assuming "new" means created in the last 24 hours
-                ->exists();
-                // $patientName = $newAppointments->patient->first_name . ' ' . $newAppointments->patient->last_name;
-        @endphp
-        @if($newAppointments)
-            <script>
-                'use strict';
-                var notify = $.notify('<i class="fa fa-bell-o"></i><strong>Loading</strong> page Do not close this page...', {
-                    type: 'theme',
-                    allow_dismiss: true,
-                    delay: 6000,
-                    showProgressbar: true,
-                    timer: 300
-                });
-
-                setTimeout(function() {
-                    notify.update('message',
-                        '<i class="fa fa-bell-o"></i>'+
-                        // '<strong>Loading</strong>'+
-                        'Check the new appointment'+
-                        // 'Check the new appointment ('+patientName+')'+
-                    '');
-                }, 1000);
-            </script>
-        @endif
-    @endif --}}
-
-    @if(auth()->user()->user_type == "doctor")
-        @php
-            $newAppointments = \App\Models\Appointment::where('doctor_id', auth()->user()->id)
-                ->whereNull('diagnosis')
-                ->where('created_at', '>=', now()->subHours(24)) // Assuming "new" means created in the last 24 hours
-                ->get(); // Use get() to retrieve the actual appointment records
-
-            // $latestAppointment = \App\Models\Appointment::sortByDesc('created_at')->first(); // The last added record
-            // $latest = $latestAppointment && $latestAppointment->id === $appointment->id ? "" : "";
-        @endphp
-        @foreach($newAppointments as $appointment)
-            @php
-                $appointmentId = $appointment->id;
-                $patientName   = $appointment->patient->first_name . ' ' . $appointment->patient->last_name;
-            @endphp
-            <script>
-                'use strict';
-                var appointmentId = {!! json_encode($appointmentId) !!}; // Encode the appointment id to prevent JavaScript errors
-                var patientName   = {!! json_encode($patientName) !!}; // Encode the patient name to prevent JavaScript errors
-                var notify = $.notify('<i class="fa fa-bell-o"></i> <a href="javascript:void(0)" class="appointment_{{ $appointmentId }} text-decoration-underline">Check</a> the new appointment (<span class="fw-bold">'+patientName+'</span>)', {
-                    type: 'theme',
-                    allow_dismiss: true,
-                    delay: 8000, // 8 seconds
-                    showProgressbar: true,
-                    timer: 300
-                });
-
-                // Add event listener to the anchor tag to redirect to the appointment show route
-                $('.appointment_{{ $appointmentId }}').click(function(e) {
-                    e.preventDefault(); // Prevent default link behavior
-                    window.location.href = '{{ route("appointments.show", ["appointment" => ":appointmentId"]) }}'.replace(':appointmentId', {{ $appointmentId }});
-                });
-
-                // setTimeout(function() {
-                //     notify.update('message',
-                //         '<i class="fa fa-bell-o"></i>'+
-                //         '<span class="text-danger fw-bold">[Latest]</span> <a href="javascript:void(0)" class="appointment_{{ $appointmentId }} text-decoration-underline">Check</a> the new appointment (<span class="fw-bold">'+patientName+'</span>)'+
-                //     '');
-                // }, 1000);
-            </script>
-        @endforeach
-    @endif
+    @include('layouts.dashboard.includes.notifications')
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.en.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.custom.js')}}"></script>

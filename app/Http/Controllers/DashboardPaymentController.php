@@ -43,9 +43,9 @@ class DashboardPaymentController extends Controller
      */
     public function create()
     {
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
-        $authUserEmail = auth()->user()->email;
-        if(in_array($authUserEmail, $allowedUsersEmails)){
+        // $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        // $authUserEmail = auth()->user()->email;
+        // if(in_array($authUserEmail, $allowedUsersEmails)){
             $appointments            = Appointment::all();
             $treatments              = Treatment::all();
             $prescriptionsTreatments = PrescriptionTreatment::all();
@@ -57,7 +57,7 @@ class DashboardPaymentController extends Controller
                 $xrays = XRay::whereNotIn('id', $associatedXrayIds)->get();
             $patients                = \App\Models\Patient::all();
             return view('dashboard.payments.mass.create', compact('appointments', 'treatments', 'prescriptionsTreatments', 'xrays', 'patients'));
-        }
+        // }
         return abort(403);
     }
 

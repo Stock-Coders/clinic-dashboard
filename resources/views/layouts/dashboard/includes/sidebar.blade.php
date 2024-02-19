@@ -33,11 +33,11 @@
             </li>
             <li class="dropdown"><a class="nav-link" href="{{ route('dashboard') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
 
-            @if (auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
+            {{-- @if (auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
                 auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
                 auth()->user()->email === "stockcoders99@gmail.com")
 
-            @endif
+            @endif --}}
 
             @if (auth()->user()->user_type === "doctor" || auth()->user()->user_type === "employee" || auth()->user()->user_type === "developer")
                 {{-- Start Users --}}
@@ -155,7 +155,7 @@
                     </ul>
                 </li>
                 {{-- End Payments --}}
-                
+
             @endif
             <li><a class="nav-link menu-title link-nav" href="javascript:void(0)"><i data-feather="headphones"></i><span>Support Ticket</span></a></li>
             @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "stockcoders99@gmail.com")
