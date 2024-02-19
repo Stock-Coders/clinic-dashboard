@@ -137,11 +137,12 @@
     @if(auth()->user()->user_type == "doctor")
         @php
             $newAppointments = \App\Models\Appointment::where('doctor_id', auth()->user()->id)
+                ->whereNull('diagnosis')
                 ->where('created_at', '>=', now()->subHours(24)) // Assuming "new" means created in the last 24 hours
                 ->get(); // Use get() to retrieve the actual appointment records
 
-            $latestAppointment = $newAppointments->sortByDesc('created_at')->first(); // The last added record
-            $latest = $latestAppointment && $latestAppointment->id === $appointment->id ? "" : "";
+            // $latestAppointment = \App\Models\Appointment::sortByDesc('created_at')->first(); // The last added record
+            // $latest = $latestAppointment && $latestAppointment->id === $appointment->id ? "" : "";
         @endphp
         @foreach($newAppointments as $appointment)
             @php
@@ -152,7 +153,7 @@
                 'use strict';
                 var appointmentId = {!! json_encode($appointmentId) !!}; // Encode the appointment id to prevent JavaScript errors
                 var patientName   = {!! json_encode($patientName) !!}; // Encode the patient name to prevent JavaScript errors
-                var notify = $.notify('<i class="fa fa-bell-o"></i> {{ $latest }} <a href="javascript:void(0)" class="appointment_{{ $appointmentId }} text-decoration-underline">Check</a> the new appointment (<span class="fw-bold">'+patientName+'</span>)', {
+                var notify = $.notify('<i class="fa fa-bell-o"></i> <a href="javascript:void(0)" class="appointment_{{ $appointmentId }} text-decoration-underline">Check</a> the new appointment (<span class="fw-bold">'+patientName+'</span>)', {
                     type: 'theme',
                     allow_dismiss: true,
                     delay: 8000, // 8 seconds

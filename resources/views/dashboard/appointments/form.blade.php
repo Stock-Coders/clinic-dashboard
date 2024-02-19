@@ -19,9 +19,19 @@
     </div>
 </div>
 
-@if (auth()->user()->user_type == 'doctor' || auth()->user()->user_type == 'developer')
+@if (auth()->user()->user_type == 'doctor')
 <div class="form-group">
     <label for="diagnosis">Diagnosis <span class="text-danger">*</span></label>
+    <input type="text" name="diagnosis" class="form-control border-1 border-dark mb-2 @error('diagnosis') is-invalid @enderror" id="diagnosis" placeholder="" value="{{$appointment->diagnosis ?? ''}}">
+    @error('diagnosis')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+@elseif(auth()->user()->user_type == 'developer')
+<div class="form-group">
+    <label for="diagnosis">Diagnosis <span class="text-muted">(The associated <span class="text-decoration-underline">doctor</span> will receive a notification, if there is o value.)</span></label>
     <input type="text" name="diagnosis" class="form-control border-1 border-dark mb-2 @error('diagnosis') is-invalid @enderror" id="diagnosis" placeholder="" value="{{$appointment->diagnosis ?? ''}}">
     @error('diagnosis')
         <span class="invalid-feedback" role="alert">

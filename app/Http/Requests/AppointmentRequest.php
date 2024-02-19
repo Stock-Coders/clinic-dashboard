@@ -38,10 +38,10 @@ class AppointmentRequest extends FormRequest
             'patient_id'         => 'required|exists:patients,id',
             'doctor_id'          => 'required|exists:users,id',
         ];
-        if(auth()->user()->user_type == 'doctor' || auth()->user()->user_type == 'developer'){
+        if(auth()->user()->user_type == 'doctor'){
             $rules['diagnosis'] = 'required|string|max:255';
 
-        }elseif(auth()->user()->user_type == 'employee'){
+        }elseif(auth()->user()->user_type == 'employee' || auth()->user()->user_type == 'developer'){
             $rules['diagnosis'] = 'nullable|string|max:255';
         }
         else{
