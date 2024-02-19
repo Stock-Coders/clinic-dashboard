@@ -25,7 +25,7 @@
         @if(auth()->user()->user_type == 'doctor')
             <span class="text-danger">*</span>
         @else(auth()->user()->user_type == 'developer')
-            <span class="text-muted">(The associated <span class="text-decoration-underline">doctor</span> will receive a notification, if there is no value provided.)</span>
+            &rightarrow; <span class="text-muted"><i class="icofont icofont-warning-alt text-warning f-18"></i> The associated <span class="text-decoration-underline fw-bold">doctor</span> will receive a notification, if there is no value provided.</span>
         @endif
     </label>
     <input type="text" name="diagnosis" class="form-control border-1 border-dark mb-2 @error('diagnosis') is-invalid @enderror" id="diagnosis" placeholder="" value="{{$appointment->diagnosis ?? ''}}">
@@ -127,4 +127,9 @@
     @enderror
 </div>
 
-
+@if (auth()->user()->user_type == 'employee')
+<p>
+    <i class="icofont icofont-warning-alt text-warning f-30"></i>
+    <span class="text-muted">When you successfully submit the form, the associated <span class="text-decoration-underline fw-bold">doctor</span> will receive a notification with this appointment.</span>
+</p>
+@endif
