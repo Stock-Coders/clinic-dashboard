@@ -41,19 +41,94 @@
             </div>
           </li> --}}
           <li class="onhover-dropdown">
-            <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
+            <div class="notification-box">
+                <i data-feather="bell"></i>
+                @php
+                    $newAppointments = \App\Models\Appointment::where('created_at', '>=', now()->subHours(24))
+                        ->where('doctor_id', auth()->user()->id) // Exclude appointments created by the current user
+                        ->where('create_user_id', '!=', auth()->user()->id)
+                        ->exists();
+
+                    $newPayments = \App\Models\Payment::where('created_at', '>=', now()->subHours(24))
+                                    ->where('create_user_id', '!=', auth()->user()->id) // Exclude payments created by the current user
+                                    ->exists();
+                @endphp
+                @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
+                auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+                auth()->user()->email === "stockcoders99@gmail.com")
+                    @if($newAppointments || $newPayments)
+                    <span class="dot-animated"></span>
+                    @endif
+                @endif
+            </div>
             <ul class="notification-dropdown onhover-show-div">
               <li>
-                <p class="f-w-700 mb-0">You have 3 Notifications<span class="pull-right badge badge-primary badge-pill">4</span></p>
+                @php
+                    $appointments = \App\Models\Appointment::where('created_at', '>=', now()->subHours(24))
+                                    ->where('doctor_id', auth()->user()->id) // Exclude appointments created by the current user
+                                    ->where('create_user_id', '!=', auth()->user()->id)
+                                    ->orderBy('created_at', 'desc')
+                                    ->limit(4)
+                                    ->get();
+                    $payments = \App\Models\Payment::where('created_at', '>=', now()->subHours(24))
+                                    ->where('create_user_id', '!=', auth()->user()->id) // Exclude payments created by the current user
+                                    ->orderBy('created_at', 'desc')
+                                    ->limit(4)
+                                    ->get();
+                @endphp
+                <p class="f-w-700 mb-0">You have {{ $appointments->count() + $payments->count() }} Notifications<span class="pull-right badge badge-primary badge-pill">{{ $appointments->count() + $payments->count() }}</span></p>
               </li>
               <li class="noti-primary">
-                <div class="media"><span class="notification-bg bg-light-primary"><i data-feather="activity"> </i></span>
+                <div class="media">
+                    {{-- @if($newAppointments)
+                        <span class="notification-bg bg-light-secondary">
+                            <i data-feather="activity"></i>
+                        </span>
+                    @elseif($newPayments)
+                        <span class="notification-bg bg-light-success">
+                            <i data-feather="activity"></i>
+                        </span>
+                    @endif --}}
                   <div class="media-body">
-                    <p>Delivery processing </p><span>10 minutes ago</span>
+                    {{-- <p>
+                        <a href="{{ route('appointments.index') }}">Appointments (Patients)</a>
+                    </p> --}}
+                    <span>
+                        @if($newAppointments)
+                            <ul>
+                                @foreach($appointments as $appointment)
+                                    <li>
+                                        <div class="d-flex">
+                                            @if($newAppointments)
+                                                <div>
+                                                    <span class="notification-bg bg-light-secondary">
+                                                        <i data-feather="activity"></i>
+                                                    </span>
+                                                </div>
+                                            @elseif($newPayments)
+                                                <div>
+                                                    <span class="notification-bg bg-light-success">
+                                                        <i data-feather="money"></i>
+                                                    </span>
+                                                </div>
+                                            @endif
+                                            @if($newAppointments)
+                                                <div>
+                                                    <a href="{{ route('appointments.show', $appointment->id) }}" class="text-decoration-underline">
+                                                        {{ $appointment->patient->first_name . ' ' . $appointment->patient->last_name ?? '-'  }}
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </span>
                   </div>
                 </div>
               </li>
-              <li class="noti-secondary">
+              {{-- <li class="noti-secondary">
                 <div class="media"><span class="notification-bg bg-light-secondary"><i data-feather="check-circle"> </i></span>
                   <div class="media-body">
                     <p>Order Complete</p><span>1 hour ago</span>
@@ -73,7 +148,7 @@
                     <p>Delivery Complete</p><span>6 hour ago</span>
                   </div>
                 </div>
-              </li>
+              </li> --}}
             </ul>
           </li>
           <li>

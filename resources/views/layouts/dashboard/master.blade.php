@@ -104,7 +104,7 @@
     <script src="{{asset('/assets/dashboard/js/vector-map/map/jquery-jvectormap-asia-mill.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/dashboard/default.js')}}"></script>
     {{-- <script src="{{asset('/assets/dashboard/js/notify/index.js')}}"></script> --}}
-    @include('layouts.dashboard.includes.notifications')
+    @include('layouts.dashboard.includes.notifications-popup')
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.en.js')}}"></script>
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
