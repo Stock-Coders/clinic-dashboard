@@ -75,8 +75,10 @@
                                     ->orderBy('created_at', 'desc')
                                     ->limit(4)
                                     ->get();
+                     // Combine appointments and payments queries using union()
+                    // $appointmentsAndPayments = $appointments->union($payments)->get();
                 @endphp
-                <p class="f-w-700 mb-0">You have {{ $appointments->count() + $payments->count() }} Notifications<span class="pull-right badge badge-primary badge-pill">{{ $appointments->count() + $payments->count() }}</span></p>
+                <p class="f-w-700 mb-0">You have <span class="text-danger fw-bold">{{ $appointments->count() + $payments->count() }}</span> Notifications<span class="pull-right badge badge-primary badge-pill">{{ $appointments->count() + $payments->count() }}</span></p>
               </li>
               <li class="noti-primary">
                 <div class="media">
@@ -94,7 +96,7 @@
                         <a href="{{ route('appointments.index') }}">Appointments (Patients)</a>
                     </p> --}}
                     <span>
-                        @if($newAppointments)
+                        {{-- @if($newAppointments) --}}
                             <ul>
                                 @foreach($appointments as $appointment)
                                     <li>
@@ -115,7 +117,7 @@
                                             @if($newAppointments)
                                                 <div>
                                                     <a href="{{ route('appointments.show', $appointment->id) }}" class="text-decoration-underline">
-                                                        {{ $appointment->patient->first_name . ' ' . $appointment->patient->last_name ?? '-'  }}
+                                                        {{ $appointment->patient->first_name . ' ' . $appointment->patient->last_name ?? '-' }}
                                                     </a>
                                                 </div>
                                             @endif
@@ -123,7 +125,7 @@
                                     </li>
                                 @endforeach
                             </ul>
-                        @endif
+                        {{-- @endif --}}
                     </span>
                   </div>
                 </div>
