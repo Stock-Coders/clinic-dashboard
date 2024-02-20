@@ -97,17 +97,17 @@
                 @foreach($chunk as $material)
                     <div class="mb-3 form-check">
                         <input type="checkbox" name="materials[{{ $material->id }}]"
-                               id="material{{ $material->id }}" value="{{ $material->id }}"
-                               class="form-check-input material-checkbox"
-                               {{ old('materials.'.$material->id) ? 'checked' : '' }}>
+                            id="material{{ $material->id }}" value="{{ $material->id }}"
+                            class="form-check-input material-checkbox"
+                            {{ old('materials.'.$material->id) ? 'checked' : '' }}>
                         <label for="material{{ $material->id }}" class="form-check-label"><span class="fw-bold">{{ $material->title }}</span> (<span class="text-primary fw-bold">{{ $material->cost }} EGP/Unit</span>)</label>
                         <input type="number"
-                               name="quantities[{{ $material->id }}]"
-                               id="quantity{{ $material->id }}"
-                               class="form-control quantity-input {{ old('materials.'.$material->id) ? '' : 'd-none' }}"
-                               min="1"
-                               placeholder="Quantity"
-                               value="{{ old('quantities.'.$material->id) }}">
+                            name="quantities[{{ $material->id }}]"
+                            id="quantity{{ $material->id }}"
+                            class="form-control quantity-input {{ old('materials.'.$material->id) ? '' : 'd-none' }}"
+                            min="1"
+                            placeholder="Quantity"
+                            value="{{ old('quantities.'.$material->id) }}">
                     </div>
                 @endforeach
             </div>

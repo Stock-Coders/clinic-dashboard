@@ -24,25 +24,25 @@
 @if($newAppointments || $newPayments)
     <script>
         'use strict';
-        // var notify = $.notify('<div class="p-3"><strong>Loading...</strong></div>', {
-        //     type: 'theme',
-        //     allow_dismiss: true,
-        //     delay: 10000, // 10 seconds
-        //     showProgressbar: true,
-        //     timer: 50
-        // });
+        var notify = $.notify('<div class="p-3"><strong>Loading...</strong></div>', {
+            type: 'theme',
+            allow_dismiss: true,
+            delay: 10000, // 10 seconds
+            showProgressbar: true,
+            timer: 50
+        });
 
         // Check if notification is already clicked
         // var notificationClicked = localStorage.getItem('notificationClicked');
 
         // if (!notificationClicked) {
-            var notify = $.notify('<div class="p-3"><strong>Loading...</strong></div>', {
-                type: 'theme',
-                allow_dismiss: true,
-                delay: 10000, // 10 seconds
-                showProgressbar: true,
-                timer: 50
-            });
+            // var notify = $.notify('<div class="p-3"><strong>Loading...</strong></div>', {
+            //     type: 'theme',
+            //     allow_dismiss: true,
+            //     delay: 10000, // 10 seconds
+            //     showProgressbar: true,
+            //     timer: 50
+            // });
         // }
 
         setTimeout(function() {

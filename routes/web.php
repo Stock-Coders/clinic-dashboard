@@ -135,7 +135,7 @@ Route::group([
         Route::resource('/materials', DashboardMaterialController::class)->except(['show']);
 
         // Treatments routes
-        Route::resource('/treatments', DashboardTreatmentController::class);
+        Route::resource('/treatments', DashboardTreatmentController::class)->except(['edit']);
         Route::get('/patient/{id}/treatments' , [DashboardTreatmentController::class, 'showIndex'])->name('treatmentsOfPatient.showIndex');
         Route::get('/pdf/treatments', [TreatmentPDFController::class, 'index'])->name('treatments.index.pdf'); // for the "index" of treatments
         Route::get('/patient/{id}/pdf/treatments', [TreatmentPDFController::class, 'showIndex'])->name('treatments.show-index.pdf'); // for the "show-index" of treatments

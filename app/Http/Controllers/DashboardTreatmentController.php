@@ -263,19 +263,19 @@ class DashboardTreatmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
-        $authUserEmail = auth()->user()->email;
-        if(in_array($authUserEmail, $allowedUsersEmails)){
-            $treatment     = Treatment::with('materials')->findOrFail($id);
-            $appointments  = Appointment::all();
-            $prescriptions = Prescription::all();
-            $materials     = \App\Models\Material::all();
-            return view('dashboard.treatments.edit', compact('treatment', 'appointments', 'prescriptions', 'materials'));
-        }
-        return abort(403);
-    }
+    // public function edit(string $id)
+    // {
+    //     $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+    //     $authUserEmail = auth()->user()->email;
+    //     if(in_array($authUserEmail, $allowedUsersEmails)){
+    //         $treatment     = Treatment::with('materials')->findOrFail($id);
+    //         $appointments  = Appointment::all();
+    //         $prescriptions = Prescription::all();
+    //         $materials     = \App\Models\Material::all();
+    //         return view('dashboard.treatments.edit', compact('treatment', 'appointments', 'prescriptions', 'materials'));
+    //     }
+    //     return abort(403);
+    // }
 
     /**
      * Update the specified resource in storage.
