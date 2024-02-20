@@ -13,11 +13,11 @@
     $notificationMessage = '';
 
     if ($newAppointments) {
-        $notificationMessage .= '<div class="notification-item"><i class="fa fa-bell-o text-danger"></i> <a href="http://localhost:8000/dashboard/appointments" id="appointment-notification" class="appointment-notification text-decoration-underline">Check</a> the new appointments were created.</div>';
+        $notificationMessage .= '<div class="notification-item"><i class="fa fa-bell-o text-danger"></i> <a href="http://localhost:8000/dashboard/appointments" id="appointment-notification" class="appointment-notification text-decoration-underline fw-bold">Check</a> the new appointments were created.</div>';
     }
 
     if ($newPayments) {
-        $notificationMessage .= '<div class="notification-item"><i class="fa fa-money text-success"></i> <a href="http://localhost:8000/dashboard/payments" id="payment-notification" class="payment-notification text-decoration-underline">Check</a> the new payments were received.</div>';
+        $notificationMessage .= '<div class="notification-item"><i class="fa fa-money text-success"></i> <a href="http://localhost:8000/dashboard/payments" id="payment-notification" class="payment-notification text-decoration-underline fw-bold">Check</a> the new payments were received.</div>';
     }
 @endphp
 
