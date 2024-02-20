@@ -12,16 +12,17 @@
     // Combine the notification message for both appointments and payments
     $notificationMessage = '';
 
-    if ($newAppointments) {
+    if ($newAppointments && !Route::is('appointments.index')) {
         $notificationMessage .= '<div class="notification-item"><i class="fa fa-bell-o text-danger"></i> <a href="http://localhost:8000/dashboard/appointments" id="appointment-notification" class="appointment-notification text-decoration-underline fw-bold">Check</a> the new appointments were created.</div>';
     }
 
-    if ($newPayments) {
+    if ($newPayments && !Route::is('payments.index')) {
         $notificationMessage .= '<div class="notification-item"><i class="fa fa-money text-success"></i> <a href="http://localhost:8000/dashboard/payments" id="payment-notification" class="payment-notification text-decoration-underline fw-bold">Check</a> the new payments were received.</div>';
     }
 @endphp
 
-@if(($newAppointments || $newPayments) && (!Route::is('appointments.index') && !Route::is('payments.index')))
+@if($newAppointments || $newPayments)
+{{-- @if(($newAppointments || $newPayments) && (!Route::is('appointments.index') && !Route::is('payments.index'))) --}}
     <script>
         'use strict';
         var notify = $.notify('<div class="p-3"><strong>Loading...</strong></div>', {
