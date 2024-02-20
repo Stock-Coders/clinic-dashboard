@@ -285,25 +285,7 @@
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Popup js-->
-    <script>
-        $(document).ready(function(){
-            // Show the popup
-            $('#popup').fadeIn();
-
-            // Hide the popup after 3 seconds
-            setTimeout(function(){
-                $('#popup').fadeOut();
-            }, 4000);
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // Wait for the DOM content to be fully loaded
-            // Get the pop-up element
-            var popup = document.getElementById("popup");
-            // Display the pop-up
-            popup.style.display = "block";
-        });
-    </script>
+    @include('layouts.dashboard.includes.brand-popup')
     <!-- Theme js-->
     <script src="{{asset('/assets/dashboard/js/script.js')}}"></script>
     <!-- login js-->

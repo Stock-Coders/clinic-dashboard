@@ -126,7 +126,7 @@
                         </div>
                         @endif
                         <div class="card-body">
-                            <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
+                            {{-- <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
                                 <div class="d-flex align-items-center flex-column">
                                     <img src="{{asset('/assets/dashboard/images/custom-images/logos/light_codex_full_logo.png')}}" alt="" width="600">
                                     <span class="text-center fw-bold  border border-2 border-dark p-3 rounded shadow">
@@ -135,7 +135,26 @@
                                         You Dream, We Implement
                                     </span>
                                 </div>
+                            </div> --}}
+
+                            <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
+                                <div class="d-flex align-items-center flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <img src="{{asset('/assets/dashboard/images/custom-images/logos/light_codex_full_logo.png')}}" alt="" width="600">
+                                        </div>
+                                        <div class="px-4">
+                                            <img src="{{asset('/assets/dashboard/images/custom-images/flags/palestine-flag.png')}}" alt="" width="200">
+                                        </div>
+                                    </div>
+                                    <span class="text-center fw-bold  border border-2 border-dark p-3 rounded shadow">
+                                        احلم و احنا نحقق
+                                        <br/>
+                                        You Dream, We Implement
+                                    </span>
+                                </div>
                             </div>
+
                             <form method="POST" action="{{ route('dashboard.login') }}">
                                 @csrf
 
@@ -263,25 +282,7 @@
     <script src="{{asset('/assets/dashboard/js/datepicker/date-picker/datepicker.custom.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Popup js-->
-    <script>
-        $(document).ready(function(){
-            // Show the popup
-            $('#popup').fadeIn();
-
-            // Hide the popup after 3 seconds
-            setTimeout(function(){
-                $('#popup').fadeOut();
-            }, 4000);
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            // Wait for the DOM content to be fully loaded
-            // Get the pop-up element
-            var popup = document.getElementById("popup");
-            // Display the pop-up
-            popup.style.display = "block";
-        });
-    </script>
+    @include('layouts.dashboard.includes.brand-popup')
     <!-- Theme js-->
     <script src="{{asset('/assets/dashboard/js/script.js')}}"></script>
     <!-- login js-->
