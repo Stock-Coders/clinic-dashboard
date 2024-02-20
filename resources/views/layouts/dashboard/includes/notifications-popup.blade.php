@@ -21,7 +21,7 @@
     }
 @endphp
 
-@if($newAppointments || $newPayments)
+@if(($newAppointments || $newPayments) && (!Route::is('appointments.index') && !Route::is('payments.index')))
     <script>
         'use strict';
         var notify = $.notify('<div class="p-3"><strong>Loading...</strong></div>', {
