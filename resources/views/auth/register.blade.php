@@ -122,12 +122,29 @@
                         <div class="card-header h2 text-center fw-bold">
                             <img src="{{asset('/assets/dashboard/images/custom-images/favicons/light_codex_logo.png')}}" alt="">
                             {{ __('Register') }}
+                            <img src="{{asset('/assets/dashboard/images/custom-images/flags/palestine-flag.png')}}" alt="" width="75">
                         </div>
-
                         <div class="card-body">
-                            <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
+                            {{-- <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
                                 <div class="d-flex align-items-center flex-column">
                                     <img src="{{asset('/assets/dashboard/images/custom-images/logos/light_codex_full_logo.png')}}" alt="" width="600">
+                                    <span class="text-center fw-bold  border border-2 border-dark p-3 rounded shadow">
+                                        احلم و احنا نحقق
+                                        <br/>
+                                        You Dream, We Implement
+                                    </span>
+                                </div>
+                            </div> --}}
+                            <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
+                                <div class="d-flex align-items-center flex-column">
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <img src="{{asset('/assets/dashboard/images/custom-images/logos/light_codex_full_logo.png')}}" alt="" width="600">
+                                        </div>
+                                        <div class="px-4">
+                                            <img src="{{asset('/assets/dashboard/images/custom-images/flags/palestine-flag.png')}}" alt="" width="200">
+                                        </div>
+                                    </div>
                                     <span class="text-center fw-bold  border border-2 border-dark p-3 rounded shadow">
                                         احلم و احنا نحقق
                                         <br/>

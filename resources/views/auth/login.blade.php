@@ -117,6 +117,7 @@
                         <div class="card-header h2 text-center fw-bold">
                             <img src="{{asset('/assets/dashboard/images/custom-images/favicons/light_codex_logo.png')}}" alt="">
                             {{ __('Login') }}
+                            <img src="{{asset('/assets/dashboard/images/custom-images/flags/palestine-flag.png')}}" alt="" width="75">
                         </div>
                         @if(session()->has('inactivityLogoutMsg'))
                         <div class="text-center">
@@ -136,7 +137,6 @@
                                     </span>
                                 </div>
                             </div> --}}
-
                             <div id="popup" style="display:none; background-color: rgb(255, 255, 255); margin-top: 10%;">
                                 <div class="d-flex align-items-center flex-column">
                                     <div class="d-flex align-items-center">
@@ -154,7 +154,6 @@
                                     </span>
                                 </div>
                             </div>
-
                             <form method="POST" action="{{ route('dashboard.login') }}">
                                 @csrf
 
