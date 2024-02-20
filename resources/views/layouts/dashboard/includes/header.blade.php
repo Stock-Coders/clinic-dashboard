@@ -40,6 +40,7 @@
               </ul>
             </div>
           </li> --}}
+          @auth
           <li class="onhover-dropdown">
             <div class="notification-box">
                 <i data-feather="bell"></i>
@@ -153,6 +154,7 @@
               </li> --}}
             </ul>
           </li>
+          @endauth
           <li>
             <div class="mode"><i class="fa fa-moon-o"></i></div>
           </li>
