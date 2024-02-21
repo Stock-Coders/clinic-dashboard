@@ -69,7 +69,9 @@
                     </td>
                     <td>{!! $limitedPrescription !!}</td>
                     <td>{{ $prescription->allergy ?? '—' }}</td>
-                    <td class="text-center">({{ $prescription->appointment->id }}) - {{$prescription->appointment->diagnosis  }}</td>
+                    <td class="text-center">
+                        ({{ $prescription->appointment->id }}) - {{$prescription->appointment->diagnosis  }}
+                    </td>
                     <td>{{ $prescription->next_visit != null ? \Carbon\Carbon::parse($prescription->next_visit)->format('d-M-Y, h:i A') : '—' }}</td>
                     <td>{{ optional($prescription->created_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') }}</td>
                     <td>{{ $prescription->updated_at ? optional($prescription->updated_at)->tz('Africa/Cairo')->format('d-M-Y, h:i A') : '—' }}</td>

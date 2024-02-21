@@ -26,7 +26,6 @@ class MaterialRequest extends FormRequest
             'quantity'           => 'nullable|integer',
             'cost'               => 'required|numeric',
             'expiration_date'    => 'required|date',
-            'representative_id'  => 'required|exists:representatives,id',
         ];
 }
 
