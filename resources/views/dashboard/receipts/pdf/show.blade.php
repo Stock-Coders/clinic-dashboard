@@ -252,7 +252,12 @@
                                                         </tr>
                                                         <tr>
                                                             <th class="bg-secondary text-light">التخفيض:&nbsp;</th>
-                                                            <td colspan="4" class="text-center fw-bold" style="background-color: rgb(252, 255, 72);">
+                                                            <td colspan="4" class="text-center fw-bold"
+                                                            @if($payment->discount != null && $payment->discount >= 1)
+                                                            style="background-color: rgb(252, 255, 72);"
+                                                            @else
+                                                            style="background-color: silver;"
+                                                            @endif>
                                                                 <span class="text-center text-dark fs-6">
                                                                     @if($payment->discount == null || $payment->discount == 0)
                                                                         0%
