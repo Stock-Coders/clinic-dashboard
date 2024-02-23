@@ -67,8 +67,8 @@
                                                         <tr>
                                                             <th class="bg-dark text-light border-secondary">التعريف</th>
                                                             <th class="bg-dark text-light border-secondary">المحتوي</th>
-                                                            <th class="bg-dark text-light border-secondary">الكمية</th>
-                                                            <th class="bg-dark text-light border-secondary">السعر (ج.م)</th>
+                                                            <th class="bg-dark text-light border-secondary">العدد</th>
+                                                            <th class="bg-dark text-light border-secondary">سعر/الوحدة (ج.م)</th>
                                                             <th class="bg-dark text-light border-secondary">الاجمالي (ج.م)</th>
                                                         </tr>
                                                     </thead>
@@ -172,10 +172,29 @@
                                                             <th class="bg-secondary text-light">X-ray(s) (ID):&nbsp;</th>
                                                             <td>
                                                                 @if($payment->xrays)
-                                                                    @foreach($payment->xrays as $key => $xray)
+                                                                    {{-- @foreach($payment->xrays as $key => $xray)
                                                                         <span class="badge rounded-circle bg-primary"><span class="fw-bold">{{ $xray->id }}</span></span>
                                                                         <span class="text-danger fw-bold">{{ $key < $payment->xrays->count() - 1 ? '-' : '' }}</span>
-                                                                    @endforeach
+                                                                    @endforeach --}}
+
+                                                                    <ul>
+                                                                        @foreach($payment->xrays as $xray)
+                                                                            <li>
+                                                                                <span class="badge bg-primary">
+                                                                                    <span class="fw-bold">
+                                                                                        {{ $xray->id }}
+                                                                                        @if($xray->timing == "before")
+                                                                                            (B)
+                                                                                        @elseif($xray->timing == "in_between")
+                                                                                            (IB)
+                                                                                        @else($xray->timing == "after")
+                                                                                            (A)
+                                                                                        @endif
+                                                                                    </span>
+                                                                                </span>
+                                                                            </li>
+                                                                        @endforeach
+                                                                    </ul>
                                                                 @else
                                                                 -
                                                                 @endif
@@ -188,6 +207,34 @@
                                                                 @endif
                                                             </td>
                                                             <td>
+                                                                {{-- Price of the total X-rays associated (final price) --}}
+                                                                {{-- @if($payment->xrays)
+                                                                    @php
+                                                                        $totalXraysCost = 0;
+                                                                    @endphp
+                                                                    @foreach($payment->xrays as $xray)
+                                                                        @php
+                                                                            $totalXraysCost += $xray->cost;
+                                                                        @endphp
+                                                                    @endforeach
+                                                                    {{ $totalXraysCost }}
+                                                                @else
+                                                                -
+                                                                @endif --}}
+
+                                                                {{-- Price of each X-ray --}}
+                                                                @if($payment->xrays)
+                                                                    <ul>
+                                                                        @foreach($payment->xrays as $xray)
+                                                                            <li>(<span class="text-primary fw-bold">{{ $xray->id }}</span>) {{ $xray->cost }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @else
+                                                                -
+                                                                @endif
+                                                            </td>
+                                                            <td class="fw-bold text-center" style="background-color: rgb(255, 250, 213);">
+                                                                {{-- Price of the total X-rays associated (final price) --}}
                                                                 @if($payment->xrays)
                                                                     @php
                                                                         $totalXraysCost = 0;
@@ -202,13 +249,10 @@
                                                                 -
                                                                 @endif
                                                             </td>
-                                                            <td class="fw-bold text-center" style="background-color: rgb(255, 250, 213);">
-                                                                {{ $totalXraysCost }}
-                                                            </td>
                                                         </tr>
                                                         <tr>
                                                             <th class="bg-secondary text-light">التخفيض:&nbsp;</th>
-                                                            <td colspan="4" class="text-center fw-bold">
+                                                            <td colspan="4" class="text-center fw-bold" style="background-color: rgb(252, 255, 72);">
                                                                 <span class="text-center text-dark fs-6">
                                                                     @if($payment->discount == null || $payment->discount == 0)
                                                                         0%
