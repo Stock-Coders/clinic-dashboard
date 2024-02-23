@@ -1,5 +1,5 @@
 @extends('layouts.dashboard.master')
-@section('title', 'Codex | Email Verification')
+@section('title', 'Codex Dental | Email Verification')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
