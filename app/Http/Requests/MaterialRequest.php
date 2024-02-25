@@ -21,11 +21,12 @@ class MaterialRequest extends FormRequest
     protected function onCreate() : array
     {
     return [
-            'title'              => 'required|string|max:255|unique:materials,title',
-            'description'        => 'nullable|string|max:765',
-            'quantity'           => 'nullable|integer',
-            'cost'               => 'required|numeric',
-            'expiration_date'    => 'required|date',
+            'title'             => 'required|string|max:255|unique:materials,title',
+            'description'       => 'nullable|string|max:765',
+            'quantity'          => 'nullable|integer',
+            'cost'              => 'required|numeric',
+            'expiration_date'   => 'required|date',
+            'representative_id' => 'required|exists:representatives,id'
         ];
 }
 
