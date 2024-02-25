@@ -9,6 +9,8 @@
                     ->where('create_user_id', '!=', auth()->user()->id) // Exclude payments created by the current user
                     ->exists();
 
+    $materialsCount = \App\Models\Material::where('quantity', '<=', 5)->count();
+
     // Combine the notification message for both appointments and payments
     $notificationMessage = '';
 
@@ -19,9 +21,15 @@
     if ($newPayments && !Route::is('payments.index')) {
         $notificationMessage .= '<div class="notification-item"><i class="fa fa-money text-success"></i> <a href="http://localhost:8000/dashboard/payments" id="payment-notification" class="payment-notification text-decoration-underline fw-bold">Check</a> the new payments were received.</div>';
     }
+
+    if ($materialsCount) {
+        $notificationMessage .= '<div class="notification-item"><i class="fa fa-warning text-warning"></i> <a href="http://localhost:8000/dashboard/materials" id="material-notification" class="material-notification text-decoration-underline fw-bold">Check</a> the material(s). Almost running out!</div>';
+    }
 @endphp
 
-@if($newAppointments || $newPayments)
+@if($newAppointments || $newPayments || ($materialsCount && (auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
+auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
+auth()->user()->email === "stockcoders99@gmail.com")))
     <script>
         'use strict';
         var notify = $.notify('<div class="p-3"><strong>Loading...</strong></div>', {
