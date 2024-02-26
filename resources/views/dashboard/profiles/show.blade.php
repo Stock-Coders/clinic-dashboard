@@ -34,7 +34,10 @@
                             @if(isset($user->profile->avatar))
                             <div class="avatar-container text-center mb-4 py-5 rounded">
                                 <p class="text-decoration-underline text-light fw-bold h5 mb-2">Current Avatar</p>
-                                <img src="{{ Storage::url($user->profile->avatar) }}" class="border border-dark border-5" width="250" alt="Image?">
+                                {{-- @php
+                                    $imageExists = Storage::exists($user->profile->avatar);
+                                @endphp --}}
+                                <img src="{{ Storage::url($user->profile->avatar) }}" class="avatar-image border border-dark border-5" width="300" alt="Image">
                             </div>
                             @endif
                             @include('dashboard.profiles.form')
@@ -76,32 +79,22 @@
 </style>
 @endpush
 
+@push('scripts')
+<!-- JavaScript for Popup Modal -->
+<script>
+    // Get the modal
+    document.addEventListener('DOMContentLoaded', function() {
+    var modalBg = document.querySelector('.modal-bg');
+    var avatarImage = document.querySelector('.avatar-image');
+    var closeBtn = document.querySelector('.close-btn');
 
-{{-- .avatar-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-    animation: colorChange 8s infinite alternate; /* Adjust the duration as needed */
-    opacity: 0.8;
-} --}}
+    avatarImage.addEventListener('click', function() {
+            modalBg.style.display = 'block';
+        });
 
-{{--
-@keyframes colorChange {
-    0% {
-        background-color: #007bff; /* Initial color */
-    }
-    25% {
-        background-color: #d000ff;
-    }
-    50% {
-        background-color: #ef0000; /* Color at the midpoint */
-    }
-    75% {
-        background-color: #ffca3a;
-    }
-    100% {
-        background-color: #28a745; /* Final color */
-    }
-} --}}
+        closeBtn.addEventListener('click', function() {
+            modalBg.style.display = 'none';
+        });
+    });
+</script>
+@endpush
