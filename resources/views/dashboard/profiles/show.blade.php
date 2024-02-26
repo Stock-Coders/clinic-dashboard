@@ -59,6 +59,7 @@
     animation: gradient 8s ease infinite;
     background-size: 400% 400%;
     background-attachment: fixed;
+    opacity: 0.85;
 }
 
 @keyframes gradient {
