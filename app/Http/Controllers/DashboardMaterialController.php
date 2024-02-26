@@ -13,7 +13,7 @@ class DashboardMaterialController extends Controller
     public function index()
     {
         $materials = Material::latest()->get();
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         return view('dashboard.materials.index', compact('materials', 'allowedUsersEmails', 'authUserEmail'));
     }
@@ -23,7 +23,7 @@ class DashboardMaterialController extends Controller
      */
     public function create()
     {
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $representatives = \App\Models\Representative::all();
@@ -65,7 +65,7 @@ class DashboardMaterialController extends Controller
     public function edit(string $id)
     {
         $material = Material::findOrFail($id);
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $representatives = \App\Models\Representative::all();

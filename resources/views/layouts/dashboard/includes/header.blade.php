@@ -56,7 +56,7 @@
                 @endphp
                 @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
                 auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                auth()->user()->email === "stockcoders99@gmail.com")
+                auth()->user()->email === "codexsoftwareservices01@gmail.com")
                     @if($newAppointments || $newPayments)
                     <span class="dot-animated"></span>
                     @endif

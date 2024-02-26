@@ -11,7 +11,7 @@ class ReceiptController extends Controller
 {
     public function index()
     {
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $payments = Payment::latest()->get();
@@ -28,7 +28,7 @@ class ReceiptController extends Controller
 
     public function showIndex(string $id)
     {
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $patient         = \App\Models\Patient::findOrFail($id);

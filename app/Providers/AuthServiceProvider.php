@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->email, [
                 'kareemtarekpk@gmail.com',
                 'mr.hatab055@gmail.com',
-                'stockcoders99@gmail.com',
+                'codexsoftwareservices01@gmail.com',
             ]);
         });
     }

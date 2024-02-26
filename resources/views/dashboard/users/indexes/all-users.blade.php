@@ -115,12 +115,12 @@
                         ($user->user_type === "developer" && auth()->user()->id !== $user->id && auth()->user()->user_type === "developer")) background-color:rgb(255, 204, 153); @endif">
                             @if(($user->email === "doctor1@gmail.com" || $user->email === "doctor2@gmail.com") && auth()->user()->id !== $user->id &&
                             (auth()->user()->email !== "kareemtarekpk@gmail.com" && auth()->user()->email !== "mr.hatab055@gmail.com" &&
-                            auth()->user()->email !== "stockcoders99@gmail.com"))
+                            auth()->user()->email !== "codexsoftwareservices01@gmail.com"))
                                 <div class="d-flex justify-content-center">
                                     <span class="text-center text-dark fw-bold fs-6"><i class="fa fa-lock f-30"></i></span> {{-- Unauthorized Action (A) for doctors (masters) --}}
                                 </div>
                             @elseif((auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                            auth()->user()->email === "stockcoders99@gmail.com") && auth()->user()->id !== $user->id && $user->user_type === "developer" &&
+                            auth()->user()->email === "codexsoftwareservices01@gmail.com") && auth()->user()->id !== $user->id && $user->user_type === "developer" &&
                             auth()->user()->user_type === "developer")
                                 <div class="d-flex justify-content-center">
                                     <span class="text-center text-dark fw-bold fs-6"><i class="fa fa-lock f-30"></i></span> {{-- Unauthorized Action (B) for developers --}}

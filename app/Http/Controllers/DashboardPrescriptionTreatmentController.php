@@ -13,7 +13,7 @@ class DashboardPrescriptionTreatmentController extends Controller
     public function index()
     {
         $authUserEmail = auth()->user()->email;
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         if(in_array($authUserEmail, $allowedUsersEmails) || auth()->user()->user_type == "doctor"){
             $prescriptionsTreatments = PrescriptionTreatment::latest()->get();
             return view('dashboard.prescriptions-treatments.index', compact('prescriptionsTreatments'));
@@ -25,7 +25,7 @@ class DashboardPrescriptionTreatmentController extends Controller
      */
     public function create()
     {
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $treatments = \App\Models\Treatment::all();
@@ -64,7 +64,7 @@ class DashboardPrescriptionTreatmentController extends Controller
     public function edit(string $id)
     {
         $prescriptionTreatment = PrescriptionTreatment::findOrFail($id);
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails) || $prescriptionTreatment->create_doctor_id == auth()->user()-id){
             $treatments = \App\Models\Treatment::all();

@@ -35,7 +35,7 @@
 
             {{-- @if (auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
                 auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                auth()->user()->email === "stockcoders99@gmail.com")
+                auth()->user()->email === "codexsoftwareservices01@gmail.com")
 
             @endif --}}
 
@@ -47,7 +47,7 @@
                             <a href="{{ route('users.UsersIndex') }}">
                                 All Users
                                 @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                                auth()->user()->email === "stockcoders99@gmail.com")
+                                auth()->user()->email === "codexsoftwareservices01@gmail.com")
                                     ({{ \App\Models\User::count() }})
                                 @else
                                     ({{ \App\Models\User::where('user_type', '!==', 'developer')->count() }})
@@ -57,12 +57,12 @@
                         <li><a href="{{ route('users.DoctorsIndex') }}">All Doctors ({{ \App\Models\User::ofType('doctor')->count() }})</a></li>
                         <li><a href="{{ route('users.EmployeesIndex') }}">All Employees ({{ \App\Models\User::ofType('employee')->count() }})</a></li>
                         @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                        auth()->user()->email === "stockcoders99@gmail.com")
+                        auth()->user()->email === "codexsoftwareservices01@gmail.com")
                             <li><a href="{{ route('users.DevelopersIndex') }}">All Developers ({{ \App\Models\User::ofType('developer')->count() }})</a></li>
                         @endif
                         @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
                         auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                        auth()->user()->email === "stockcoders99@gmail.com")
+                        auth()->user()->email === "codexsoftwareservices01@gmail.com")
                             <li><a href="{{ route('users.create') }}">Create User</a></li>
                         @endif
                     </ul>
@@ -84,7 +84,7 @@
                 <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="plus-square"></i><span>Materials</span></a>
                     <ul class="nav-submenu menu-content">
                         <li><a href="{{ route('materials.index') }}">All Materials ({{ \App\Models\Material::count() }})</a></li>
-                        @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "stockcoders99@gmail.com")
+                        @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "codexsoftwareservices01@gmail.com")
                         <li><a href="{{ route('materials.create') }}">Create Material</a></li>
                         @endif
                     </ul>
@@ -96,7 +96,7 @@
                         <li><a href="{{ route('appointments.index') }}">All Appointments ({{ \App\Models\Appointment::count() }})</a></li>
                         <li><a href="{{ route('appointments.create') }}">Create Appointment</a></li>
                         @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                        auth()->user()->email === "stockcoders99@gmail.com")
+                        auth()->user()->email === "codexsoftwareservices01@gmail.com")
                         <li><a href="{{ route('appointments.trash') }}">All Trashed Appointment ({{ \App\Models\Appointment::onlyTrashed()->count() }})</a></li>
                         @endif
                     </ul>
@@ -107,7 +107,7 @@
                     <ul class="nav-submenu menu-content">
                         <li><a href="{{ route('prescriptions.index') }}">All Prescriptions ({{ \App\Models\Prescription::count() }})</a></li>
                         @if(auth()->user()->user_type == "doctor"  || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                        auth()->user()->email === "stockcoders99@gmail.com")
+                        auth()->user()->email === "codexsoftwareservices01@gmail.com")
                             <li><a href="{{ route('prescriptions.create') }}">Create Prescription</a></li>
                         @endif
                     </ul>
@@ -120,7 +120,7 @@
                         <li><a href="{{ route('treatments.create') }}">Create Treatment</a></li>
                         <li><a href="{{ route('prescriptions-treatments.index') }}">All Treatments' Prescriptions ({{ \App\Models\PrescriptionTreatment::count() }})</a></li>
                         @if(auth()->user()->user_type == "doctor"  || auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                        auth()->user()->email === "stockcoders99@gmail.com")
+                        auth()->user()->email === "codexsoftwareservices01@gmail.com")
                             <li><a href="{{ route('prescriptions-treatments.create') }}">Create Prescription for Treatment</a></li>
                         @endif
                     </ul>
@@ -129,7 +129,7 @@
                 {{-- Start Materials Treatments --}}
                 @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
                 auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                auth()->user()->email === "stockcoders99@gmail.com")
+                auth()->user()->email === "codexsoftwareservices01@gmail.com")
                     <li class="dropdown">
                         <a class="nav-link" href="{{ route('materials-treatments.index') }}"><i data-feather="grid"></i><span>Treatments' Materials</span></a>
                     </li>
@@ -141,7 +141,7 @@
                         <li><a href="{{ route('representatives.index') }}">All Representatives ({{ \App\Models\Representative::count() }})</a></li>
                         @if(auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
                         auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                        auth()->user()->email === "stockcoders99@gmail.com")
+                        auth()->user()->email === "codexsoftwareservices01@gmail.com")
                             <li><a href="{{ route('representatives.create') }}">Create Representative</a></li>
                         @endif
                     </ul>
@@ -158,7 +158,7 @@
 
             @endif
             <li><a class="nav-link menu-title link-nav" href="javascript:void(0)"><i data-feather="headphones"></i><span>Support Ticket</span></a></li>
-            @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "stockcoders99@gmail.com")
+            @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "codexsoftwareservices01@gmail.com")
             <li class="dropdown"><a class="nav-link" href="{{ route('dashboard.debugging') }}"><i data-feather="cpu"></i><span>Debugging Tools</span></a></li>
             @endif
           </ul>

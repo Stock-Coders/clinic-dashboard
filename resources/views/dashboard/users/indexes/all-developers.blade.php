@@ -101,7 +101,7 @@
                     {{-- <td><a class="btn btn-secondary btn-md px-2" href="javascript:void(0)" target="_blank">Show</a></td> --}}
                     <th style="@if($developer->user_type === "developer" && auth()->user()->id !== $developer->id && auth()->user()->user_type === "developer") background-color:rgb(255, 204, 153); @endif">
                         @if((auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-                        auth()->user()->email === "stockcoders99@gmail.com") && auth()->user()->id !== $developer->id && $developer->user_type === "developer" &&
+                        auth()->user()->email === "codexsoftwareservices01@gmail.com") && auth()->user()->id !== $developer->id && $developer->user_type === "developer" &&
                         auth()->user()->user_type === "developer")
                             <div class="d-flex justify-content-center">
                                 <span class="text-center text-dark fw-bold fs-6"><i class="fa fa-lock f-30"></i></span> {{-- Unauthorized Action for developers --}}

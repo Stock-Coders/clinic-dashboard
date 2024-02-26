@@ -23,7 +23,7 @@ class DashboardMaterialTreatmentController extends Controller
                 break; // Break the loop since we've found a treatment with no associated materials
             }
         }
-        $allowedUsersEmails  = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails  = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail       = auth()->user()->email;
         return view('dashboard.materials-treatments.index', compact('materialsTreatments', 'allowedUsersEmails', 'authUserEmail'));
     }

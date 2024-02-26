@@ -73,7 +73,7 @@
 {{-- ***************************** Payment Notification ***************************** --}}
 @if((auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com" ||
 auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-auth()->user()->email === "stockcoders99@gmail.com") && !Route::is('payments.index'))
+auth()->user()->email === "codexsoftwareservices01@gmail.com") && !Route::is('payments.index'))
     @php
         $newPayments = \App\Models\Payment::where('created_at', '>=', now()->subHours(24)) // Assuming "new" means created in the last 24 hours
                         ->exists();

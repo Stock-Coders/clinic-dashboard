@@ -16,7 +16,7 @@ class DashboardTreatmentController extends Controller
     public function index()
     {
         $treatments = Treatment::latest()->get();
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         return view('dashboard.treatments.index' , compact('treatments', 'allowedUsersEmails', 'authUserEmail'));
     }
@@ -27,7 +27,7 @@ class DashboardTreatmentController extends Controller
     public function create()
     {
 
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $appointments  = Appointment::all();
@@ -265,7 +265,7 @@ class DashboardTreatmentController extends Controller
      */
     // public function edit(string $id)
     // {
-    //     $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+    //     $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
     //     $authUserEmail = auth()->user()->email;
     //     if(in_array($authUserEmail, $allowedUsersEmails)){
     //         $treatment     = Treatment::with('materials')->findOrFail($id);

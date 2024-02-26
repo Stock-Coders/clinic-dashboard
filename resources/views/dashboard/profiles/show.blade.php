@@ -32,8 +32,8 @@
                         <form action="{{ route('profile.storeOrUpdate') }}" class="forms-sample" method="POST" id="alert-form" enctype="multipart/form-data">
                             @csrf
                             @if(isset($user->profile->avatar))
-                            <div class="text-left mb-4">
-                                <p class="text-decoration-underline fw-bold h5 mb-2">Current Avatar</p>
+                            <div class="avatar-container text-center mb-4 py-5 rounded">
+                                <p class="text-decoration-underline text-light fw-bold h5 mb-2">Current Avatar</p>
                                 <img src="{{ Storage::url($user->profile->avatar) }}" class="border border-dark border-5" width="250" alt="Image?">
                             </div>
                             @endif
@@ -48,3 +48,59 @@
     </div>
 </div>
 @endsection
+
+@push('styles')
+<style>
+.avatar-container {
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 8s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+</style>
+@endpush
+
+
+{{-- .avatar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    animation: colorChange 8s infinite alternate; /* Adjust the duration as needed */
+    opacity: 0.8;
+} --}}
+
+{{--
+@keyframes colorChange {
+    0% {
+        background-color: #007bff; /* Initial color */
+    }
+    25% {
+        background-color: #d000ff;
+    }
+    50% {
+        background-color: #ef0000; /* Color at the midpoint */
+    }
+    75% {
+        background-color: #ffca3a;
+    }
+    100% {
+        background-color: #28a745; /* Final color */
+    }
+} --}}

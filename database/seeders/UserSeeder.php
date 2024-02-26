@@ -97,8 +97,8 @@ class UserSeeder extends Seeder
         ]);
 
         $user = User::create([ //ID = 8 (user_type = developer)
-            'username'              => "StockCoders",
-            'email'                 => "stockcoders99@gmail.com",
+            'username'              => "Codex Software Services",
+            'email'                 => "codexsoftwareservices01@gmail.com",
             'password'              => '$2y$12$kl2xvidqwUgZLfnKzmMpK.lM0lnlHJS.ys.Dhokyuu4hRVplopGqS',
             'phone'                 => "01061770559",
             'user_type'             => "developer",
