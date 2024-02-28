@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Patient;
+use App\Models\XRay;
 use App\Models\Representative;
 use App\Models\Material;
 
@@ -29,10 +30,11 @@ class DashboardSearchController extends Controller
         }
         $patients = Patient::where('first_name', 'like', "%$searchQuery%")
                         ->orWhere('last_name', 'like', "%$searchQuery%")->get();
+        $xrays = XRay::where('timing', 'like', "%$searchQuery%")->latest()->get();
         $representatives = Representative::where('name', 'like', "%$searchQuery%")
                         ->orWhere('email', 'like', "%$searchQuery%")->get();
         $materials = Material::where('title', 'like', "%$searchQuery%")->get();
-        $mergedResults = $users->merge($patients)->merge($representatives)->merge($materials);
+        $mergedResults = $users->merge($patients)->merge($xrays)->merge($representatives)->merge($materials);
         return view('dashboard.search-results', compact('searchQuery', 'mergedResults'));
     }
 }

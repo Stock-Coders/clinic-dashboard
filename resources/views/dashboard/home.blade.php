@@ -29,11 +29,11 @@
     @endif --}}
 
     @if(session()->has('search_error'))
-    <div class="alert alert-danger text-center w-75 mx-auto" id="alert-danger-message">
+    <div class="alert alert-warning text-center w-75 mx-auto" id="alert-danger-message">
         <p class="position-absolute top-0 end-0">
             <span class="close-btn f-30" onclick="dismissMessage('alert-danger-message');"><i class="icofont icofont-ui-close"></i></span>
         </p>
-        {{ session()->get('search_error') }}
+        <span class="text-dark">{{ session()->get('search_error') }}</span>
     </div>
     @endif
 

@@ -52,6 +52,8 @@
                             @endif
                         @elseif($result->getTable() == "patients")
                             {{ $result->first_name .' '. $result->last_name }}
+                        @elseif($result->getTable() == "xrays")
+                            {{ $result->timing == "in_between" ? "In Between" : ucfirst($result->timing) }}
                         @elseif($result->getTable() == "representatives")
                             {{ $result->name }}
                             @if($result->email != null)
