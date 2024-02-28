@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\{
     Route, Auth, Cache, Log, Gate
 };
 use App\Http\Controllers\{
-    Auth\RegisterController, Auth\LoginController,
+    Auth\RegisterController, Auth\LoginController, DashboardSearchController,
     DashboardHomeController, UserController, ProfileController,
     DashboardRepresentativeController, DashboardMaterialController,
     DashboardPatientController, DashboardLastVisitController,
@@ -72,6 +72,10 @@ Route::group([
 ], function(){
     Route::prefix('dashboard')->group(function(){
         Route::get('/', [DashboardHomeController::class, 'index'])->name('dashboard');
+
+        // Search routes
+        Route::get('/search', [DashboardSearchController::class, 'searchResults'])->name('dashboard.search');
+
         // Users routes
         Route::resource('/users', UserController::class)->except(['index', 'show']);
         Route::get('/users' , [UserController::class, 'AllUsers'])->name('users.UsersIndex');
