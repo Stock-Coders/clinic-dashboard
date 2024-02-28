@@ -23,8 +23,8 @@
             </div>
             {{-- <div class="d-flex justify-content-start align-items-center"> --}}
                 {{-- <div class="d-flex align-items-center">
-                    <img src="{{ asset('assets/dashboard/images/custom-images/logos/black logo (transparent background).png') }}" alt="stockcoders_logo" width="150">
-                    <span class="fw-bold h4">StockCoders</span>
+                    <img src="{{ asset('assets/dashboard/images/custom-images/logos/black logo (transparent background).png') }}" alt="codex_software_services_logo" width="150">
+                    <span class="fw-bold h4">Codex Software Services</span>
                 </div> --}}
                 {{-- <h3>اخصائي طب و جراحة الوجه و الفكين</h3> --}}
                 {{-- <h2>All Receipts ({{ \App\Models\Receipt::count() }})</h2> --}}

@@ -28,6 +28,15 @@
         </div>
     @endif --}}
 
+    @if(session()->has('search_error'))
+    <div class="alert alert-warning text-center w-75 mx-auto" id="alert-danger-message">
+        <p class="position-absolute top-0 end-0">
+            <span class="close-btn f-30" onclick="dismissMessage('alert-danger-message');"><i class="icofont icofont-ui-close"></i></span>
+        </p>
+        <span class="text-dark">{{ session()->get('search_error') }}</span>
+    </div>
+    @endif
+
     <div class="row">
         <div class="col-xl-6 box-col-12 des-xl-100">
             <div class="row">

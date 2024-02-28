@@ -13,7 +13,7 @@ class DashboardPrescriptionController extends Controller
     public function index()
     {
         $prescriptions = Prescription::latest()->get();
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         return view('dashboard.prescriptions.index', compact('prescriptions', 'allowedUsersEmails', 'authUserEmail'));
     }
@@ -23,7 +23,7 @@ class DashboardPrescriptionController extends Controller
      */
     public function create()
     {
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $appointments = \App\Models\Appointment::all();
@@ -54,7 +54,7 @@ class DashboardPrescriptionController extends Controller
     {
         $prescription = Prescription::findOrFail($id);
         return view('dashboard.prescriptions.show', compact('prescription'));
-        
+
     }
 
     /**
@@ -63,7 +63,7 @@ class DashboardPrescriptionController extends Controller
     public function edit(string $id)
     {
         $prescription = Prescription::findOrFail($id);
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $appointments = \App\Models\Appointment::all();

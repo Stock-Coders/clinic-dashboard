@@ -30,8 +30,8 @@ class ProfileSeeder extends Seeder
         ]);
 
         $profile = Profile::create([ //ID = 3
-            'name'    => "StockCoders™",
-            'avatar'  => "public/assets/dashboard/images/users/profiles/avatars/StockCoders/stockcoders.png",
+            'name'    => "Codex Software Services",
+            'avatar'  => "public/assets/dashboard/images/users/profiles/avatars/Codex Software Services/codexsoftwareservices.png",
             'user_id' => 8
         ]);
     }

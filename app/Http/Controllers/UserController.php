@@ -20,15 +20,15 @@ class UserController extends Controller
         if(auth()->user()->user_type === "employee" || auth()->user()->user_type === "doctor"){
             $users = User::whereNotIn('user_type', ['developer'])->get();
             $authUserEmail = auth()->user()->email;
-            $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
-            $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+            $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
+            $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
             return view('dashboard.users.indexes.all-users', compact('users', 'authUserEmail', 'allowedUsersEmails', 'developersEmails'));
         }
         elseif(auth()->user()->user_type === "developer"){
             $users = User::all();
             $authUserEmail = auth()->user()->email;
-            $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
-            $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+            $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
+            $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
             return view('dashboard.users.indexes.all-users', compact('users', 'authUserEmail', 'allowedUsersEmails', 'developersEmails'));
         }
         else{
@@ -40,8 +40,8 @@ class UserController extends Controller
     {
         $doctors = User::ofType('doctor')->get();
         $authUserEmail = auth()->user()->email;
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
-        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
+        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         return view('dashboard.users.indexes.all-doctors', compact('doctors', 'authUserEmail', 'allowedUsersEmails', 'developersEmails'));
     }
 
@@ -49,15 +49,15 @@ class UserController extends Controller
     {
         $employees = User::ofType('employee')->get();
         $authUserEmail = auth()->user()->email;
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
-        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
+        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         return view('dashboard.users.indexes.all-employees', compact('employees', 'authUserEmail', 'allowedUsersEmails', 'developersEmails'));
     }
 
     public function AllDevelopers()
     {
         $authUserEmail = auth()->user()->email;
-        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         if(in_array($authUserEmail, $developersEmails)){
             $developers = User::ofType('developer')->get();
             return view('dashboard.users.indexes.all-developers', compact('developers'));
@@ -70,7 +70,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             return view('dashboard.users.create');
@@ -116,20 +116,20 @@ class UserController extends Controller
             ($user->email === "kareemtarekpk@gmail.com" && auth()->user()->email === "mr.hatab055@gmail.com") ||
             ($user->email === "mr.hatab055@gmail.com" && auth()->user()->email === "kareemtarekpk@gmail.com") ||
 
-            ($user->email === "stockcoders99@gmail.com" && auth()->user()->email === "kareemtarekpk@gmail.com") ||
-            ($user->email === "kareemtarekpk@gmail.com" && auth()->user()->email === "stockcoders99@gmail.com") ||
+            ($user->email === "codexsoftwareservices01@gmail.com" && auth()->user()->email === "kareemtarekpk@gmail.com") ||
+            ($user->email === "kareemtarekpk@gmail.com" && auth()->user()->email === "codexsoftwareservices01@gmail.com") ||
 
-            ($user->email === "mr.hatab055@gmail.com" && auth()->user()->email === "stockcoders99@gmail.com") ||
-            ($user->email === "stockcoders99@gmail.com" && auth()->user()->email === "mr.hatab055@gmail.com") ||
+            ($user->email === "mr.hatab055@gmail.com" && auth()->user()->email === "codexsoftwareservices01@gmail.com") ||
+            ($user->email === "codexsoftwareservices01@gmail.com" && auth()->user()->email === "mr.hatab055@gmail.com") ||
 
             (($user->email === "kareemtarekpk@gmail.com" || $user->email === "mr.hatab055@gmail.com" ||
-            $user->email === "stockcoders99@gmail.com") && (auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com"))
+            $user->email === "codexsoftwareservices01@gmail.com") && (auth()->user()->email === "doctor1@gmail.com" || auth()->user()->email === "doctor2@gmail.com"))
         ){
             return abort(403);
         }
         // if the logged in user is a developer, and the fetched data is for "doctor1@gmail.com" or "doctor2@gmail.com" the  make access available
         elseif(((auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" ||
-        auth()->user()->email === "stockcoders99@gmail.com") && ($user->email === "doctor1@gmail.com" || $user->email === "doctor2@gmail.com"))){
+        auth()->user()->email === "codexsoftwareservices01@gmail.com") && ($user->email === "doctor1@gmail.com" || $user->email === "doctor2@gmail.com"))){
             return view('dashboard.users.edit', compact('user'));
         }
         // if the logged in user is employee or doctor (but not "doctor1@gmail.com" or "doctor2@gmail.com"), then redirect the authenticated user to his/her own edit page
@@ -187,7 +187,7 @@ class UserController extends Controller
         // $user = User::findOrFail($id);
         $user = User::where('username', $username)->firstOrFail();
         $authUserEmail = auth()->user()->email;
-        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         // The users are only available to access their own change password page no one else could access someone's else change password page
         if($user->id === auth()->user()->id || (in_array($authUserEmail, $developersEmails) && !in_array($user->email, $developersEmails))){
             return view('dashboard.users.change-password.changePassword', compact('user'));
@@ -248,7 +248,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $userEmail = $user->email;
-        $preventUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $preventUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         if(auth()->user()->id === $user->id || in_array($userEmail, $preventUsersEmails)){
             return abort(403);
         }

@@ -48,7 +48,7 @@
 
 @if($user->id !== auth()->user()->id && (auth()->user()->email === "doctor1@gmail.com" ||
 auth()->user()->email === "doctor2@gmail.com" || auth()->user()->email === "kareemtarekpk@gmail.com" ||
-auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "stockcoders99@gmail.com"))
+auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "codexsoftwareservices01@gmail.com"))
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
@@ -74,7 +74,7 @@ auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "
                     <option value="" selected>-------- Select a user type --------</option>
                     <option value="doctor" {{ $user->user_type === 'doctor' ? 'selected' : '' }}>Doctor</option>
                     <option value="employee" {{ $user->user_type === 'employee' ? 'selected' : '' }}>Employee</option>
-                    @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "stockcoders99@gmail.com")
+                    @if(auth()->user()->email === "kareemtarekpk@gmail.com" || auth()->user()->email === "mr.hatab055@gmail.com" || auth()->user()->email === "codexsoftwareservices01@gmail.com")
                     <option value="developer" {{ $user->user_type === 'developer' ? 'selected' : '' }}>Developer</option>
                     @endif
                 </select>

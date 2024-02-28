@@ -50,7 +50,7 @@
 </div>
 
 <div class="row">
-    @if($user->email !== "stockcoders99@gmail.com")
+    @if($user->email !== "codexsoftwareservices01@gmail.com")
     <div class="col-md-4">
         <div class="form-group row">
             <label class="col-sm-4">Gender <span class="text-danger">*</span></label>
@@ -74,7 +74,7 @@
         </div>
     </div>
     @endif
-    <div class="col-md-4 @if($user->email === "stockcoders99@gmail.com") col-md-6 @endif">
+    <div class="col-md-4 @if($user->email === "codexsoftwareservices01@gmail.com") col-md-6 @endif">
         <div class="form-group">
             <label for="address">Address</label>
             <input type="text" name="address" class="form-control border-1 border-dark mb-2 @error('address') is-invalid @enderror" id="address" placeholder="" value="{{ $user->profile->address ?? '' }}">
@@ -85,7 +85,7 @@
             @enderror
         </div>
     </div>
-    <div class="col-md-4 @if($user->email === "stockcoders99@gmail.com") col-md-6 @endif">
+    <div class="col-md-4 @if($user->email === "codexsoftwareservices01@gmail.com") col-md-6 @endif">
         <div class="form-group">
             <label for="secondary_phone">Secondary Phone</label>
             <input type="text" name="secondary_phone" class="form-control border-1 border-dark @error('secondary_phone') is-invalid @enderror" id="secondary_phone" placeholder="" value="{{ $user->profile->secondary_phone ?? '' }}">

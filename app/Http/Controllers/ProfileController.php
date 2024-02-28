@@ -15,7 +15,7 @@ class ProfileController extends Controller
     // show - method (1) ~ Better Method: -----> Handles existing and non-extant data with 403 for better privacy & security
     public function showProfile(string $username)
     {
-        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $user = User::where('username', $username)->firstOrFail();
         if((!$user || $user->id !== auth()->user()->id) && !in_array(auth()->user()->email, $developersEmails)){ // !$user is same as $user == null
             return abort(403);
@@ -32,7 +32,7 @@ class ProfileController extends Controller
     // // show - method (2) ~ Good Method: -----> Handles existing data only with 403 (and non-extant data with 404)
     // public function showProfile(User $user)
     // {
-    //     $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+    //     $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
     //     if((!$user || $user->id !== auth()->user()->id) && !in_array(auth()->user()->email, $developersEmails)){ // !$user is same as $user == null
     //         return abort(403);
     //     }
@@ -52,7 +52,7 @@ class ProfileController extends Controller
 
             // The allowed users only (by email)
             $authUserEmail = auth()->user()->email;
-            $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"]; // To allow these users only!
+            $developersEmails = ["kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"]; // To allow these users only!
 
             // Ensure that the 'user_id' in the request matches the authenticated user's ID, except for the mentioned users above are allowed same as the authenticated users
             if ($validatedData['user_id'] != auth()->id() && !in_array($authUserEmail, $developersEmails)) {
@@ -77,12 +77,12 @@ class ProfileController extends Controller
             if ($existingSecondaryPhone) {
                 return redirect()->back()->with('error', 'The secondary phone has already been taken.');
             }
-            // Validation for gender: Check if the gender is left empty (gender is a required field but not required for stockcoders99@gmail.com)
-            if (empty($validatedData['gender']) && $userProfile->user->email !== "stockcoders99@gmail.com"){
+            // Validation for gender: Check if the gender is left empty (gender is a required field but not required for codexsoftwareservices01@gmail.com)
+            if (empty($validatedData['gender']) && $userProfile->user->email !== "codexsoftwareservices01@gmail.com"){
                 return redirect()->back()->with('error', 'Please select a gender!');
             }
-            // The gender field is null for user "stockcoders99@gmail.com"
-            if($userProfile->user->email === "stockcoders99@gmail.com"){
+            // The gender field is null for user "codexsoftwareservices01@gmail.com"
+            if($userProfile->user->email === "codexsoftwareservices01@gmail.com"){
                 $validatedData['gender'] = null;
             }
             // Check if a file is present in the request (for "avatar")

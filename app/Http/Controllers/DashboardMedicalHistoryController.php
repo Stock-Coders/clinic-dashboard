@@ -13,7 +13,7 @@ class DashboardMedicalHistoryController extends Controller
     public function index()
     {
         $medicalHistories   = MedicalHistory::all();
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail      = auth()->user()->email;
         return view('dashboard.medical-histories.index', compact('medicalHistories', 'allowedUsersEmails', 'authUserEmail'));
     }
@@ -25,7 +25,7 @@ class DashboardMedicalHistoryController extends Controller
     public function create()
     {
         //
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $appointments = \App\Models\Appointment::all();
@@ -61,7 +61,7 @@ class DashboardMedicalHistoryController extends Controller
     {
         //
           //
-        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "stockcoders99@gmail.com"];
+        $allowedUsersEmails = ["doctor1@gmail.com", "doctor2@gmail.com", "kareemtarekpk@gmail.com", "mr.hatab055@gmail.com", "codexsoftwareservices01@gmail.com"];
         $authUserEmail = auth()->user()->email;
         if(in_array($authUserEmail, $allowedUsersEmails)){
             $medicalHistory = MedicalHistory::findOrFail($id);
