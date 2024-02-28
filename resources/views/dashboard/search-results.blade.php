@@ -27,12 +27,13 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>ID</th>
-                    <th>Subject (Title/Name)</th>
-                    <th>Reference (Entity)</th>
-                    {{-- @if(in_array($authUserEmail, $allowedUsersEmails)) --}}
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Subject (Title/Name)</th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Reference (Entity)</th>
+                    @if(in_array($authUserEmail, $allowedUsersEmails))
                     <th class="text-center">Action</th>
-                    {{-- @endif --}}
+                    @endif
                 </tr>
                 </thead>
                 <tbody>
@@ -46,14 +47,17 @@
                             (<span class="fw-bold text-primary">{{ $result->email }}</span>)
                             <br/>
                             @if($result->user_role != null)
-                                (<span class="fw-bold text-danger">{{ ucfirst($result->user_type) }} &rightarrow; {{ ucfirst($result->user_role) }} </span>)
+                                (<span class="fw-bold text-danger">{{ ucfirst($result->user_type) }}</span> &rightarrow; <span class="fw-bold text-secondary">{{ ucfirst($result->user_role) }}</span>)
                             @else
                                 (<span class="fw-bold text-danger">{{ ucfirst($result->user_type) }}</span>)
                             @endif
                         @elseif($result->getTable() == "patients")
-                            {{ $result->first_name .' '. $result->last_name }}
+                            <a class="text-decoration-underline fw-bold" href="{{ route('patients.show', [$result->id, $result->first_name]) }}" target="_blank">
+                                {{ $result->first_name .' '. $result->last_name }}
+                            </a>
                         @elseif($result->getTable() == "xrays")
-                            {{ $result->timing == "in_between" ? "In Between" : ucfirst($result->timing) }}
+                            <a class="text-decoration-underline fw-bold" href="{{ route('x-rays.show', $result->id) }}" target="_blank">{{ $result->timing == "in_between" ? "In Between" : ucfirst($result->timing) }}</a>
+                            (<a class="text-decoration-underline fw-bold text-secondary" href="{{ route('patients.show', [$result->patient_id, $result->patient->first_name]) }}" target="_blank">{{ $result->patient->first_name .' '. $result->patient->last_name }}</a>)
                         @elseif($result->getTable() == "representatives")
                             {{ $result->name }}
                             @if($result->email != null)
@@ -63,8 +67,46 @@
                             {{ $result->title }}
                         @endif
                     </td>
-                    <th>{{ ucfirst($result->getTable()) }}</th>
-                    {{-- @if(in_array($authUserEmail, $allowedUsersEmails)) --}}
+                    <td class="image-td text-center">
+                        @if($result->getTable() == "users")
+                            @if(isset($result->profile->avatar))
+                            <img src="{{ Storage::url($result->profile->avatar) }}" class="@if(!Storage::exists($result->profile->avatar)) bg-warning p-2 rounded text-center text-dark @endif" alt="Image not found." width="80">
+                            @else
+                            {{-- No Image. --}}
+                            —
+                            @endif
+                        @elseif($result->getTable() == "patients")
+                        <img src="{{ Storage::url($result->image) }}" alt="—" width="80">
+                        @elseif($result->getTable() == "xrays")
+                        <img src="{{ Storage::url($result->image) }}" alt="—" width="80">
+                        @else
+                        —
+                        @endif
+                    </td>
+                    <th>
+                        @if($result->getTable() == "users")
+                            <a href="{{ route('users.UsersIndex') }}" class="text-decoration-underline fw-bold" target="_blank">
+                                {{ ucfirst($result->getTable()) }}
+                            </a>
+                        @elseif($result->getTable() == "patients")
+                            <a href="{{ route('patients.index') }}" class="text-decoration-underline fw-bold" target="_blank">
+                                {{ ucfirst($result->getTable()) }}
+                            </a>
+                        @elseif($result->getTable() == "xrays")
+                            <a href="{{ route('x-rays.index') }}" class="text-decoration-underline fw-bold" target="_blank">
+                                X-rays
+                            </a>
+                        @elseif($result->getTable() == "representatives")
+                            <a href="{{ route('representatives.index') }}" class="text-decoration-underline fw-bold" target="_blank">
+                                {{ ucfirst($result->getTable()) }}
+                            </a>
+                        @elseif($result->getTable() == "materials")
+                            <a href="{{ route('materials.index') }}" class="text-decoration-underline fw-bold" target="_blank">
+                                {{ ucfirst($result->getTable()) }}
+                            </a>
+                        @endif
+                    </th>
+                    @if(in_array($authUserEmail, $allowedUsersEmails))
                     <th class="w-25">
                         <div class="d-flex justify-content-center">
                             @if($result->getTable() == "users")
@@ -87,6 +129,18 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('Are you sure that you want to delete ({{ $result->first_name . ' '. $result->last_name }})\'s patient?');"title="Delete (<?php echo $result->first_name . ' ' . $result->last_name; ?>)" class="btn btn-danger btn-md m-1 px-3"><i class="fa fa-trash-o f-18"></i></button>
+                                </form>
+                            @elseif($result->getTable() == "xrays")
+                                <a class="btn btn-warning text-dark btn-md m-1 px-3" href="{{ route('x-rays.show', $result->id) }}">
+                                    <i class="icofont icofont-open-eye f-24"></i>
+                                </a>
+                                <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('x-rays.edit', $result->id) }}">
+                                    <i class="fa fa-edit f-18"></i>
+                                </a>
+                                <form action="{{ route('x-rays.destroy', $result->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Are you sure that you want to delete ({{ $result->patient->first_name . ' '. $result->patient->last_name }})\'s X-ray?');"title="Delete (<?php echo $result->patient->first_name.'\'s X-ray'; ?>)" class="btn btn-danger btn-md m-1 px-3"><i class="fa fa-trash-o f-18"></i></button>
                                 </form>
                             @elseif($result->getTable() == "representatives")
                                 <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('representatives.edit', $result->id) }}">
@@ -112,7 +166,7 @@
                             @endif
                         </div>
                     </th>
-                    {{-- @endif --}}
+                    @endif
                 </tr>
                 @endforeach
                 </tbody>
@@ -129,6 +183,11 @@
 @push('styles')
 <!-- Plugins css start-->
 <link rel="stylesheet" type="text/css" href="{{ asset('/assets/dashboard/css/datatables.css') }}">
+<style>
+    .image-td {
+        width: 20%;
+    }
+</style>
 @endpush
 
 @push('scripts')
