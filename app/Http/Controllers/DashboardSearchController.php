@@ -35,10 +35,13 @@ class DashboardSearchController extends Controller
         }
         $patients = Patient::where('first_name', 'like', "%$searchQuery%")
                         ->orWhere('last_name', 'like', "%$searchQuery%")
-                        ->orWhere(function($query) use ($searchQuery) {
-                            $query->where(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', "%$searchQuery%")
-                                ->orWhere(DB::raw("CONCAT(first_name, '', last_name)"), 'like', "%$searchQuery%");
-                        })->get();
+                        // ->orWhere(function($query) use ($searchQuery) {
+                        //     $query->where(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', "%$searchQuery%")
+                        //         ->orWhere(DB::raw("CONCAT(first_name, '', last_name)"), 'like', "%$searchQuery%");
+                        // })
+                        ->orWhereRaw("CONCAT(first_name, ' ', last_name) like ?", ["%$searchQuery%"])
+                        ->orWhereRaw("CONCAT(first_name, '', last_name) like ?", ["%$searchQuery%"])
+                        ->get();
         $xrays = XRay::where('timing', 'like', "%$searchQuery%")->latest()->get();
         $representatives = Representative::where('name', 'like', "%$searchQuery%")
                         ->orWhere('email', 'like', "%$searchQuery%")->get();
