@@ -107,17 +107,27 @@
                         @endif
                     </th>
                     @if(in_array($authUserEmail, $allowedUsersEmails))
-                    <th class="w-25">
+                    <th class="w-25" style="@if(auth()->user()->user_type == "developer" && $result->id != auth()->user()->id && $result->user_type == "developer") background-color: rgb(255, 204, 153); @endif">
                         <div class="d-flex justify-content-center">
                             @if($result->getTable() == "users")
-                                <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('users.edit', $result->id) }}"title="Edit ({{ $result->username }})">
-                                    <i class="fa fa-edit f-18"></i>
-                                </a>
-                                <form action="{{ route('users.destroy', $result->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure that you want to delete ({{ $result->username }}) user?');"title="Delete (<?php echo $result->username; ?>)" class="btn btn-danger btn-md m-1 px-3"><i class="fa fa-trash-o f-18"></i></button>
-                                </form>
+                                @if(auth()->user()->user_type == "developer" && $result->user_type != "developer")
+                                    <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('users.edit', $result->id) }}"title="Edit ({{ $result->username }})">
+                                        <i class="fa fa-edit f-18"></i>
+                                    </a>
+                                    <form action="{{ route('users.destroy', $result->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Are you sure that you want to delete ({{ $result->username }}) user?');"title="Delete (<?php echo $result->username; ?>)" class="btn btn-danger btn-md m-1 px-3"><i class="fa fa-trash-o f-18"></i></button>
+                                    </form>
+                                @elseif(auth()->user()->user_type == "developer" && auth()->user()->id == $result->id)
+                                    <a class="btn btn-primary btn-md m-1 px-3" href="{{ route('users.edit', $result->id) }}"title="Edit ({{ $result->username }})">
+                                        <i class="fa fa-edit f-18"></i>
+                                    </a>
+                                @else
+                                    <div class="d-flex justify-content-center">
+                                        <span class="text-center text-dark fw-bold fs-6"><i class="fa fa-lock f-30"></i></span> {{-- Unauthorized Action (A) for doctors (masters) --}}
+                                    </div>
+                                @endif
                             @elseif($result->getTable() == "patients")
                                 <a class="btn btn-warning text-dark btn-md m-1 px-3" href="{{ route('patients.show', $result->id) }}">
                                     <i class="icofont icofont-open-eye f-24"></i>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Patient;
 use App\Models\XRay;
@@ -33,7 +34,11 @@ class DashboardSearchController extends Controller
                 })->get();
         }
         $patients = Patient::where('first_name', 'like', "%$searchQuery%")
-                        ->orWhere('last_name', 'like', "%$searchQuery%")->get();
+                        ->orWhere('last_name', 'like', "%$searchQuery%")
+                        ->orWhere(function($query) use ($searchQuery) {
+                            $query->where(DB::raw("CONCAT(first_name, ' ', last_name)"), 'like', "%$searchQuery%")
+                                ->orWhere(DB::raw("CONCAT(first_name, '', last_name)"), 'like', "%$searchQuery%");
+                        })->get();
         $xrays = XRay::where('timing', 'like', "%$searchQuery%")->latest()->get();
         $representatives = Representative::where('name', 'like', "%$searchQuery%")
                         ->orWhere('email', 'like', "%$searchQuery%")->get();
