@@ -14,11 +14,11 @@
                     <a href="{{ route('dashboard') }}">Dashboard</a> / <a href="{{ route('x-rays.index') }}">X-rays</a> / All {{ $patient->first_name . ' ' . $patient->last_name }}'s X-rays
                 </div>
                 <div class="col-md-3">
-                    <form action="{{ route('patient.x-rays.clear', $patient->id) }}" method="POST" id="x-rays-clear">
+                    <form action="{{ route('patient.x-rays.clear', $patient->id) }}" method="POST" id="patient-x-rays-clear">
                         @csrf
                         @method('DELETE')
                         {{-- <a href="javascript:void(0);" onclick="return confirm('Are you sure that you want to delete all the x-rays for ('.$patient->first_name . ' ' . $patient->last_name.')?'); document.querySelector('#x-rays-clear').submit();" title="Delete all {{ $patient->first_name.'\'s' }} x-rays?" class="btn btn-danger">Clear All {{ $patient->first_name }}'s X-rays</a> --}}
-                        <button type="submit" onclick="return confirm('Are you sure that you want to delete all the x-rays for ('.$patient->first_name . ' ' . $patient->last_name.')?'); document.querySelector('#x-rays-clear').submit();" title="Delete all {{ $patient->first_name.'\'s' }} x-rays?" class="btn btn-danger">Clear All {{ $patient->first_name }}'s X-rays</button>
+                        <button type="submit" onclick="return confirm('Are you sure that you want to delete all the x-rays for the current patient?'); document.querySelector('#patient-x-rays-clear').submit();" title="Delete all {{ $patient->first_name.'\'s' }} x-rays?" class="btn btn-danger">Clear All {{ $patient->first_name }}'s X-rays</button>
                     </form>
                 </div>
                 <div class="col-md-3">

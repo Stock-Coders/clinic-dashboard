@@ -13,7 +13,7 @@
           <li>
             <form action="{{ route('dashboard.search') }}" class="form-inline search-form">
               <div class="search-bg"><i class="fa fa-search"></i>
-                <input class="form-control-plaintext" name="search_query" placeholder="Search for specific users, patients, representatives or materials?" size="500">
+                <input class="form-control-plaintext" name="search_query" placeholder="Search for specific users, patients, x-rays, representatives or materials?" size="500">
               </div>
             </form><span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
           </li>
