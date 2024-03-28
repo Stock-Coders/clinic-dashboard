@@ -120,7 +120,7 @@
                 <div class="col-md-8">
                     <div class="card shadow rounded-3">
                         <div class="card-header h2 text-center fw-bold">
-                            <img src="{{asset('/assets/dashboard/images/custom-images/favicons/light_codex_logo.png')}}" alt="">
+                            <img src="{{asset('/assets/dashboard/images/custom-images/favicons/light_codex_logo.png')}}" alt="" width="85">
                             {{ __('Register') }}
                             <img src="{{asset('/assets/dashboard/images/custom-images/flags/palestine-flag.png')}}" alt="" width="75">
                         </div>
