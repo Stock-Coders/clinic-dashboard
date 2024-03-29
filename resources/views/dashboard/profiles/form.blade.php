@@ -31,7 +31,7 @@
 
 <div class="form-group">
     <label for="bio">Bio</label>
-    <textarea name="bio" class="form-control border-1 border-dark mb-2 @error('bio') is-invalid @enderror" id="bio" placeholder="" cols="30" rows="5">{{ old('bio', $user->profile->bio) }}</textarea>
+    <textarea name="bio" class="form-control border-1 border-dark mb-2 @error('bio') is-invalid @enderror" id="bio" placeholder="" cols="30" rows="5">{{ $user->profile->bio ?? '' }}</textarea>
     @error('bio')
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>

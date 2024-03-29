@@ -15,17 +15,18 @@ class RedirectToDashboard
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Method (1):
-            $currentUrl = $request->url(); // Get the current URL
-            // Check if the current URL is localhost:8000
-            if ($currentUrl === 'http://localhost:8000') {
-                return redirect()->route('dashboard');
-            }
-        // Method (2):
-            // $currentUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-            // if($currentUrl === 'http://localhost:8000/'){
-            //     return redirect()->route('dashboard');
-            // }
+        // // Method (1):
+        //     $currentUrl = $request->url(); // Get the current URL
+        //     // Check if the current URL is localhost:8000
+        //     if ($currentUrl === 'http://localhost:8000') {
+        //         return redirect()->route('dashboard');
+        //     }
+        // // Method (2):
+        //     // $currentUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        //     // if($currentUrl === 'http://localhost:8000/'){
+        //     //     return redirect()->route('dashboard');
+        //     // }
+        return redirect()->route('dashboard');
         return $next($request);
     }
 }
