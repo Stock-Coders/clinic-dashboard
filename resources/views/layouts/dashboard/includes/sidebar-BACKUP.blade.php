@@ -47,7 +47,7 @@
                                     auth()->user()->email === "codexsoftwareservices01@gmail.com")
                                         ({{ \App\Models\User::count() }})
                                     @else
-                                        ({{ \App\Models\User::where('user_type', '!==', 'developer')->count() }})
+                                        ({{ \App\Models\User::whereNotIn('user_type', ['developer'])->count() }})
                                     @endif
                                 </a>
                             </li>
@@ -130,7 +130,7 @@
                             <li>
                                 <a href="{{ route('users.UsersIndex') }}">
                                     All Users
-                                    ({{ \App\Models\User::where('user_type', '!==', 'developer')->count() }})
+                                    ({{ \App\Models\User::whereNotIn('user_type', ['developer'])->count() }})
                                 </a>
                             </li>
                             <li><a href="{{ route('users.DoctorsIndex') }}">All Doctors ({{ \App\Models\User::ofType('doctor')->count() }})</a></li>

@@ -32,8 +32,8 @@
                         <form action="{{ route('profile.storeOrUpdate') }}" class="forms-sample" method="POST" id="alert-form" enctype="multipart/form-data">
                             @csrf
                             @if(isset($user->profile->avatar))
-                            <div class="avatar-container text-center mb-4 py-5 rounded">
-                                <p class="text-decoration-underline text-light fw-bold h5 mb-2">Current Avatar</p>
+                            <div class="avatar-container text-center mb-5 rounded">
+                                <h5 class="text-decoration-underline fw-bold mb-2">Current Avatar</h5>
                                 {{-- @php
                                     $imageExists = Storage::exists($user->profile->avatar);
                                 @endphp --}}
@@ -52,7 +52,7 @@
 </div>
 @endsection
 
-@push('styles')
+{{-- @push('styles')
 <style>
 .avatar-container {
     margin: auto;
@@ -76,9 +76,9 @@
     }
 } */
 </style>
-@endpush
+@endpush --}}
 
-@push('scripts')
+{{-- @push('scripts')
 <!-- JavaScript for Popup Modal -->
 <script>
     // Get the modal
@@ -96,4 +96,4 @@
         });
     });
 </script>
-@endpush
+@endpush --}}
