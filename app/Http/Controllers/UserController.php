@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
 // use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Facades\Hash;
 // use Illuminate\Validation\Rule;
@@ -205,8 +205,12 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         try {
+            // All the following field mustn't be empty: Old/Current password input + new password input + confirm password input.
+            if(empty($request->old_password) || empty($request->new_password) || empty($request->confirm_new_password)){
+                return redirect()->back()->with('fields_are_required', 'All the fields are required to be filled!');
+            }
             // The old/current password is not matching the current password in the DB.
-            if(!Hash::check($request->old_password, $user->password)) {
+            elseif(!Hash::check($request->old_password, $user->password)) {
                 return redirect()->back()->with('old_pass_req_not_matching_db', '"Current Password" did not match "the Current Password". Please try again!');
             }
             // New password is not matching the confirmation (confirm password).
@@ -215,11 +219,7 @@ class UserController extends Controller
             }
             // New password is equal to the old/current password. So you must change it! It mst be a very new password.
             elseif(Hash::check($request->new_password, $user->password)) {
-                return redirect()->back()->with('new_pass_req_is_matching_old', '"New Password" must be different than the "Current Password"');
-            }
-            // All the following field mustn't be empty: Old/Current password input + new password input + confirm password input.
-            elseif(empty($request->old_password) || empty($request->new_password) || empty($request->confirm_new_password)){
-                return redirect()->back()->with('fields_are_required', 'All the fields are required to be filled!');
+                return redirect()->back()->with('new_pass_req_is_matching_old', 'Please choose a new password that is different from your current one.');
             }
             elseif(strlen($request->new_password) < 8){
                 return redirect()->back()->with('new_pass_must_8_more_char', 'Password must be at least 8 characters long.');
@@ -229,14 +229,14 @@ class UserController extends Controller
                 $user->password = bcrypt($request->new_password);
                 $user->save();
                 if(auth()->user()->id === $user->id){
-                    return redirect()->back()->with('password_changed_successfully', 'Your password has been updated successfully!');
+                    return redirect()->back()->with('password_changed_successfully', 'Your password has been updated successfully.');
                 }
                 else{
-                    return redirect()->back()->with('password_changed_successfully', '"'.$user->username.'"\'s password has been updated successfully!');
+                    return redirect()->back()->with('password_changed_successfully', '"'.$user->username.'"\'s password has been updated successfully.');
                 }
             }
         } catch (\Exception $exception){
-            dump($exception);
+            // dump($exception);
             return redirect()->route('users.changePassword')->with('error', 'Something went wrong!');
         }
     }

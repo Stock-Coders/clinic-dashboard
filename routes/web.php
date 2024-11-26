@@ -90,7 +90,7 @@ Route::group([
         // Change Password routes => For auth()->user() users only! Which are the logged in users themselves not anyone else even the system creators (developers)
         Route::middleware(['checkUserActivity.logOut'])->group(function () { // Log out the authenticated user (logged in user) and redirect him/her to the login page with a message (for AFK reason)
             Route::get('/user/change-password/{username}', [UserController::class, 'changePassword'])->name('users.changePassword');
-            Route::patch('/user/change-password/{id}', [UserController::class, 'updatePassword'])->name('users.updatePassword');
+            Route::patch('/user/update-password/{id}', [UserController::class, 'updatePassword'])->name('users.updatePassword');
         });
 
         // Patients routes
