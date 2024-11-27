@@ -9,7 +9,7 @@
           <div class="card-header">
             <div class="d-flex justify-content-between">
                 <div class="p-3">
-                    <img src="{{ asset('assets/dashboard/images/custom-images/logos/light_codex_full_logo.png') }}" alt="codex_logo" width="200">
+                    <img src="{{ asset('assets/dashboard/images/custom-images/logos/light_codex_logo.png') }}" alt="codex_logo" width="100">
                 </div>
                 <div id="clinic-logo">
                     <img src="{{ asset('assets/dashboard/images/custom-images/logos/teeth-logo.png') }}" alt="clinic_logo" width="200">

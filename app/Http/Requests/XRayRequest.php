@@ -29,8 +29,8 @@ class XRayRequest extends FormRequest
 
         // Add 'sometimes' validation for the 'image' field in PATCH or PUT requests
         $imageRule = $this->isMethod('patch') || $this->isMethod('put') ?
-            'sometimes|nullable|image|mimes:png,jpg,jpeg,gif,svg' :
-            'required|image|mimes:png,jpg,jpeg,gif,svg';
+            'sometimes|nullable|image|mimes:png,jpg,jpeg,gif,webp' :
+            'required|image|mimes:png,jpg,jpeg,gif,webp';
 
         return array_merge($commonRules, ['image' => $imageRule]);
     }
@@ -40,8 +40,8 @@ class XRayRequest extends FormRequest
         return [
             'patient_id.exists' => 'The selected patient does not exist.',
             'image.required'    => 'The X-ray image is required.',
-            'image.image'       => 'The image field must be an image (png, jpg, jpeg, gif, svg).',
-            'image.mimes'       => 'The image must be a file of type: png, jpg, jpeg, gif, svg.'
+            'image.image'       => 'The image field must be an image.',
+            'image.mimes'       => 'The image must be a file of type: png, jpg, jpeg, gif, webp.'
         ];
     }
 

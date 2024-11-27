@@ -26,7 +26,7 @@ class PatientRequest extends FormRequest
                 'last_name'       => 'required|string|max:255',
                 'chief_complaint' => 'required|in:badly_aesthetic,severe_pain,mastication',
                 'chronic_disease' => 'nullable|string|max:255',
-                'image'           => 'nullable|image|mimes:png,jpg,jpeg|max:2500', // max 2500 KiloBytes (2.5 MB)
+                'image'           => 'nullable|image|mimes:png,jpg,jpeg,webp|max:2500', // max 2500 KiloBytes (2.5 MB)
                 'email'           => 'nullable|email|max:255|unique:patients,email',
                 'phone'           => 'required|numeric|digits:11|unique:patients,phone',
                 'emergency_phone' => 'nullable|numeric|digits:11|unique:patients,emergency_phone',
@@ -47,7 +47,7 @@ class PatientRequest extends FormRequest
                 'last_name'       => 'required|string|max:255',
                 'chief_complaint' => 'required|in:badly_aesthetic,severe_pain,mastication',
                 'chronic_disease' => 'nullable|string|max:255',
-                'image'           => 'nullable|sometimes|image|mimes:png,jpg,jpeg|max:2500', // max 2500 KiloBytes (2.5 MB)
+                'image'           => 'nullable|sometimes|image|mimes:png,jpg,jpeg,webp|max:2500', // max 2500 KiloBytes (2.5 MB)
                 'email'           => ['nullable', 'email', 'max:255', Rule::unique('patients' ,'email')->ignore($id)],
                 'phone'           => ['required', 'numeric','digits:11', Rule::unique('patients' ,'phone')->ignore($id)],
                 'emergency_phone' => ['nullable', 'numeric','digits:11', Rule::unique('patients' ,'emergency_phone')->ignore($id)],
@@ -62,8 +62,8 @@ class PatientRequest extends FormRequest
         public function messages()
         {
             return [
-                'image.image' => 'The image field must be an image (png, jpg, jpeg, gif, svg).',
-                'image.mimes' => 'The image must be a file of type: png, jpg, jpeg, gif, svg.'
+                'image.image' => 'The image field must be an image.',
+                'image.mimes' => 'The image must be a file of type: png, jpg, jpeg, webp.'
             ];
         }
 

@@ -141,7 +141,7 @@
                                 <div class="d-flex align-items-center flex-column">
                                     <div class="d-flex align-items-center">
                                         <div>
-                                            <img src="{{asset('/assets/dashboard/images/custom-images/favicons/light_codex_logo.png')}}" alt="" width="200">
+                                            <img src="{{asset('/assets/dashboard/images/custom-images/logos/light_codex_logo.png')}}" alt="" width="200">
                                         </div>
                                         <div class="px-4">
                                             <img src="{{asset('/assets/dashboard/images/custom-images/flags/palestine-flag.png')}}" alt="" width="180">
