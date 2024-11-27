@@ -18,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \Illuminate\Filesystem\Events\FileUploaded::class => [
+            \App\Listeners\FixFilePermissions::class,
+        ],
     ];
 
     /**
